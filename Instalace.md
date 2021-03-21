@@ -6,15 +6,18 @@ nav_order: 3
 
 # Instalace
 
-Instalaci systému je možné provést dvěma způsoby:
+Instalaci systému je možné provést několika způsoby:
 
-* Spuštění pomocí docker-compose (nejjednodušší a nejrychlejší způsob spuštění pro vyzkoušení)
+* Spuštění pomocí docker-compose
 * Spuštění v Kubernetes
 * Instalací na stávající OS (Linux nebo Windows)
 
 ## 1 Spuštění pomocí docker-compose
 
-Postupujte dle README v adresáři [docker-compose](https://github.com/svjis/svjis-docker/tree/master/docker-compose).
+Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a vyzkoušet. Co budete potřebovat?
+
+* Nainstalujte si [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* Postupujte dle README v adresáři [docker-compose](https://github.com/svjis/svjis-docker/tree/master/docker-compose).
 
 ## 2 Spuštění v Kubernetes
 

@@ -19,3 +19,7 @@ Vložení obrázku do textu se provede následovně:
 
 * Obrázek (obrázky) připojte k článku jako přílohu
 * Do textu, kde má být obrázek umístěn, napište jeho název ve složených závorkách. Například takto `{foto1.jpg}`
+
+# Diskuze
+
+Pro další dotazy a odpovědi navštivte [diskuze](https://github.com/svjis/svjis/discussions) na GitHubu. 
