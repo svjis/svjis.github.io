@@ -88,6 +88,8 @@ Zde jsou definované gloální parametry pro společenství
 | mail.password                            | Heslo k účtu odchozí pošty smtp.                                                      |
 | mail.sender                              | E-Mail, který bude uveden jako odesílající ve všech notifikacích posílaných systémem. |
 | mail.smtp                                | Server odchozí pošty smtp.                                                            |
+| mail.smtp.port                           | Port serveru odchozí pošty smtp.                                                      |
+| mail.smtp.ssl                            | SSL/TLS protokol serveru odchozí pošty. (true/false)                                  |
 | mail.template.article.notification       | Šablona notifikace pro upozornění na nový článek.                                     |
 | mail.template.comment.notification       | Šablona notifikace pro upozornění na nový komentář pod článkem.                       |
 | mail.template.fault.assigned             | Šablona notifikace pro upozornění na přiřazení tiketu řešiteli.                       |
