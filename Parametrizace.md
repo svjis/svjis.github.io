@@ -67,6 +67,8 @@ Na stránce rolí můžete vytvářet a uproavovat práva jednotlivých rolí. V
 | fault_reporting_reporter   | Právo reportovat nové závady                |
 | fault_reporting_resolver   | Právo být řešitelem závad a uzavírat je     |
 | fault_reporting_comment    | Právo vkládat komentáře k závadám           |
+| menu_adverts               | Právo vidět menu Inzeráty                   |
+| can_insert_advert          | Právo vkládat nové inzeráty                 |
 
 ### 2.6 Vlastnosti
 
@@ -74,6 +76,7 @@ Zde jsou definované gloální parametry pro společenství
 
 | Klíč                                     | Popis                                                                                 |
 | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| advert.menu.default                      | Id výchozí složky menu inzerátů.                                                      |
 | anonymous.user.id                        | Id nepřihlášeného uživatele.                                                          |
 | article.menu.default.item                | Id výchozí složky článků. (0 = žádné výchozí menu)                                    |
 | article.page.size                        | Počet článků na stránce.                                                              |
