@@ -28,6 +28,10 @@ Na stránce společenství vyplňte adresu a kontaktní údaje vašeho společen
 
 Na stránce dům vyplňte údaje dle katastru nemovitostí.
 
+Obrázek v hlavičce webu o rozměrech 940 x 94 bodů. Jako předlohu můžete použít:
+* [Obrázek ve formátu PNG](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.png)
+* [Obrázek ve formátu XCF](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.xcf)
+
 ### 2.3 Seznam jednotek
 
 Na stránce seznam jednotek vyplňte jednotky tak jak jsou evidované v katastru nemovitostí včetně podílů.
