@@ -39,3 +39,7 @@ nav_order: 2
 
 * možnost evidovat seznam jednotek a jejich vlastníků
 * možnost exportů databáze vlastníků a jednotek do Excelu
+
+## Inzeráty
+
+* uživatelé mohou vystavovat soukromé inzeráty typu prodám, koupím ...
