@@ -80,7 +80,6 @@ Zde jsou definované gloální parametry pro společenství
 
 | Klíč                                     | Popis                                                                                 |
 | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| advert.menu.default                      | Id výchozí složky menu inzerátů.                                                      |
 | advert.page.size                         | Počet inzerátů na stránce.                                                            |
 | anonymous.user.id                        | Id nepřihlášeného uživatele.                                                          |
 | article.menu.default.item                | Id výchozí složky článků. (0 = žádné výchozí menu)                                    |
