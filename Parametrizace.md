@@ -30,7 +30,7 @@ Na stránce dům vyplňte údaje dle katastru nemovitostí.
 
 Obrázek v hlavičce webu o rozměrech 940 x 94 bodů. Jako předlohu můžete použít:
 * [Obrázek ve formátu PNG](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.png)
-* [Obrázek ve formátu XCF](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.xcf)
+* [Obrázek ve formátu XCF](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.xcf) (Gimp)
 
 ### 2.3 Seznam jednotek
 
