@@ -10,7 +10,7 @@ Instalaci systému je možné provést několika způsoby:
 
 * Spuštění pomocí docker-compose
 * Spuštění v Kubernetes
-* Instalací na stávající OS (Linux nebo Windows)
+* Instalací na fyzický nebo virtuální server (Linux nebo Windows)
 
 ## 1 Spuštění pomocí docker-compose
 
@@ -23,7 +23,7 @@ Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a 
 
 Postupujte dle README v adresáři [kubernetes](https://github.com/svjis/svjis-docker/tree/master/kubernetes).
 
-## 3 Instalace na stávající systém
+## 3 Instalace na fyzický nebo virtuální server
 
 ### 3.1 Databáze Firebird
 
