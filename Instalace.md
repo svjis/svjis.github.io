@@ -77,6 +77,8 @@ docker-compose -f svjis-dev.yml up -d
 Pokud jste se rozhodli aplikaci nainstalovat a vystavit pro uživatele na internetu pak budete potřebovat nakonfigurovat doménu na které aplikace poběží a získat pro ní certifikát.
 
 
+Připravuje se...
+
 ## 2 Spuštění v Kubernetes
 
 Postupujte dle README v adresáři [kubernetes](https://github.com/svjis/svjis-docker/tree/master/kubernetes).
