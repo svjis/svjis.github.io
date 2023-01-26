@@ -8,16 +8,76 @@ nav_order: 3
 
 Instalaci systému je možné provést několika způsoby:
 
-* Spuštění pomocí docker-compose
+* Spuštění pomocí docker-compose (preferovaná varianta)
 * Spuštění v Kubernetes
 * Instalací na fyzický nebo virtuální server (Linux nebo Windows)
 
 ## 1 Spuštění pomocí docker-compose
 
-Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a vyzkoušet. Co budete potřebovat?
+Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a vyzkoušet. Co budete potřebovat? Pokud pracujete ve Windows nebo MacOS tak si nainstalujte [Docker Desktop](https://www.docker.com/products/docker-desktop). Pokud pracujete v Linuxu tak si nainstalujte Docker a docker-compose standardním způsobem pro vaší distribuci.
 
-* Nainstalujte si [Docker Desktop](https://www.docker.com/products/docker-desktop)
-* Postupujte dle README v adresáři [docker-compose](https://github.com/svjis/svjis-docker/tree/master/docker-compose).
+### 1.1 Developerská konfigurace
+
+Pokud si chcete aplikaci jen vyzkoušet na vašem počítači, tak pro vás bude nejjednodušší a nejrychlejší developerská konfigurace.
+
+Nejprve si naklonujte projekt `svjis-docker`.
+
+```
+git clone https://github.com/svjis/svjis-docker.git
+```
+
+V adresáři `docker-compose` je v souborech `svjis-dev.yml` a `create-schema.sh` defaultní heslo `change-it` - změňte si ho za nové.
+
+Přepněte se do adresáře `docker-compose` a spusťe konfiguraci `svjis-dev.yml`.
+
+```
+cd docker-compose
+docker-compose -f svjis-dev.yml up -d
+```
+
+Tím se stáhnou docker obrazy pro aplikaci a pro databázi a spustí se v kontajneru. Aplikaci jsme spustili poprvé a tak je ještě potřeba vytvořit databázi. 
+
+Stáhněte si aktuální databázové schema [database.sql](https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql) a zkopírujte ho do adresáře `docker-compose`. To můžete udělat buď ručně nebo následujícím příkazem.
+
+```
+cd docker-compose
+curl -k -L -o ./database.sql -L https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql
+```
+
+Pak zkopírujte schema `database.sql` a skript `create-schema.sh` do běžícího databázového kontajneru.
+
+```
+docker cp ./database.sql svjis_db:/firebird/
+docker cp ./create-schema.sh svjis_db:/firebird/
+```
+
+Nakonec v kontajneru spusťte skript na vytvoření databáze.
+
+```
+docker exec -it svjis_db bash "/firebird/create-schema.sh"
+```
+
+Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese http://localhost:8080. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
+
+Aplikaci zastavíte příkazem
+
+```
+docker-compose -f svjis-dev.yml down
+```
+
+a opět spustíte
+
+```
+docker-compose -f svjis-dev.yml up -d
+```
+
+
+### 1.2 Produkční konfigurace
+
+Pokud jste se rozhodli aplikaci nainstalovat a vystavit pro uživatele na internetu pak budete potřebovat nakonfigurovat doménu na které aplikace poběží a získat pro ní certifikát.
+
+
+Připravuje se...
 
 ## 2 Spuštění v Kubernetes
 
