@@ -59,6 +59,19 @@ docker exec -it svjis_db bash "/firebird/create-schema.sh"
 
 Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese http://localhost:8080. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
 
+Aplikaci zastavíte příkazem
+
+```
+docker-compose -f svjis-dev.yml down
+```
+
+a opět spustíte
+
+```
+docker-compose -f svjis-dev.yml up -d
+```
+
+
 ### 1.2 Produkční konfigurace
 
 Pokud jste se rozhodli aplikaci nainstalovat a vystavit pro uživatele na internetu pak budete potřebovat nakonfigurovat doménu na které aplikace poběží a získat pro ní certifikát.
