@@ -15,8 +15,7 @@ SVJIS je open source CMS (Content management system) vyvíjený pro potřeby SVJ
 * [Parametrizace](Parametrizace.md)
 * [Často kladené dotazy](FAQ.md)
 * [Kontakt](Kontakt.md)
-
-Hashtags: 
+ 
 #WebSvj 
 {: .label .label-yellow }
 
