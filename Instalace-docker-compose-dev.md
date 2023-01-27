@@ -1,12 +1,13 @@
 ---
 layout: default
-title: Docker compose developerská konfigurace
+title: Docker compose dev
 nav_order: 1
 parent: Instalace
 ---
 
 # Docker compose - developerská konfigurace
 
+{: .note }
 Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a vyzkoušet. Co budete potřebovat? Pokud pracujete ve Windows nebo MacOS tak si nainstalujte [Docker Desktop](https://www.docker.com/products/docker-desktop). Pokud pracujete v Linuxu tak si nainstalujte Docker a docker-compose standardním způsobem pro vaší distribuci.
 
 Pokud si chcete aplikaci jen vyzkoušet na vašem počítači, tak pro vás bude nejjednodušší a nejrychlejší developerská konfigurace.
