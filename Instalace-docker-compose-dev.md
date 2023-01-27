@@ -7,7 +7,7 @@ parent: Instalace
 
 # Docker compose - developerská konfigurace
 
-{: .note }
+{: .highlight }
 Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a vyzkoušet. Co budete potřebovat? Pokud pracujete ve Windows nebo MacOS tak si nainstalujte [Docker Desktop](https://www.docker.com/products/docker-desktop). Pokud pracujete v Linuxu tak si nainstalujte Docker a docker-compose standardním způsobem pro vaší distribuci.
 
 Pokud si chcete aplikaci jen vyzkoušet na vašem počítači, tak pro vás bude nejjednodušší a nejrychlejší developerská konfigurace.
@@ -18,6 +18,7 @@ Nejprve si naklonujte projekt `svjis-docker`.
 git clone https://github.com/svjis/svjis-docker.git
 ```
 
+{: .important }
 V adresáři `docker-compose` je v souborech `svjis-dev.yml` a `create-schema.sh` defaultní heslo `change-it` - změňte si ho za nové.
 
 Přepněte se do adresáře `docker-compose` a spusťe konfiguraci `svjis-dev.yml`.
