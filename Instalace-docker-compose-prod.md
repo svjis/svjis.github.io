@@ -65,4 +65,4 @@ docker-compose -f svjis-dev.yml up -d
 Nyní by měl být certifikát na adrese `https://<vase.domena>` platný. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
 
 {: .warning }
-Defaultní heslo admina změňte v __Osobní nastavení - Změna hesla__ co nedříve - nejlépe ještě před připojením na webu na internet.
+Defaultní heslo admina změňte v __Osobní nastavení - Změna hesla__ co nedříve - nejlépe ještě před připojením webu na internet.
