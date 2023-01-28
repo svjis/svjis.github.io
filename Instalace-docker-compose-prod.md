@@ -7,7 +7,6 @@ parent: Instalace
 
 # Docker compose - produkční konfigurace
 
-{: .highlight }
 Co budete potřebovat? 
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop).
