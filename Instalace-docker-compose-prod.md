@@ -7,6 +7,9 @@ parent: Instalace
 
 # Docker compose - produkční konfigurace
 
+{: .highlight }
+Pokud si chcete aplikaci jen vyzkoušet a nechcete jí publikovat na internetu tak postupujte podle [návodu pro vývojáře](Instalace-docker-compose-dev.md).
+
 ## Co budete potřebovat? 
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop).
@@ -67,9 +70,9 @@ Port 8181 byl zvolen místo standardního portu 80 protože ten nemusí být na 
 
 ## Vypublikování aplikace na internet
 
-Zjistěte si vaší veřejnou IP adresu, třeba zde [https://www.mojeip.cz/](https://www.mojeip.cz/) a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou ip (případně CNAME záznam na již existující hostname vaší IP adresy).
+Zjistěte si vaší veřejnou IP adresu, třeba zde [https://www.mojeip.cz/](https://www.mojeip.cz/) a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou IP adresu (případně CNAME záznam na již existující hostname vaší IP adresy).
 
-Zjistěte si IP adresu vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP server přiřazoval počítači vždy stejnou IP. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na <interní_ip_vašeho_počítače> a port 8181 a požadavky na port 443 přeposílal <interní_ip_vašeho_počítače> a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
+Zjistěte si IP adresu vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP server přiřazoval počítači vždy stejnou IP. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na _interní_ip_vašeho_počítače_ a port 8181 a požadavky na port 443 přeposílal _interní_ip_vašeho_počítače_ a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
 
 Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange pro ověření domény nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
 
