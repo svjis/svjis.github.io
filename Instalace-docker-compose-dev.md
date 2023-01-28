@@ -63,3 +63,6 @@ a opět spustíte
 ```
 docker-compose -f svjis-dev.yml up -d
 ```
+
+{: .note }
+Pokud byste chtěli aplikaci naplnit testovacími daty (uživatelé s různým oprávněním, články, komentáře, tickety od uživatelů...) tak můžete spustit [seleniový test](https://github.com/svjis/svjis-selenium) který testovací data vyrobí. Předpokladem je že máte na počítači nainstalovanou `Javu` a `Maven`.
