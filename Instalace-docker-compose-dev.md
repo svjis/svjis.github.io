@@ -12,7 +12,7 @@ Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a 
 
 Pokud si chcete aplikaci jen vyzkoušet na vašem počítači, tak pro vás bude nejjednodušší a nejrychlejší developerská konfigurace.
 
-Nejprve si naklonujte projekt `svjis-docker`.
+Nejprve si naklonujte projekt [svjis-docker](https://github.com/svjis/svjis-docker).
 
 ```
 git clone https://github.com/svjis/svjis-docker.git
@@ -65,4 +65,4 @@ docker-compose -f svjis-dev.yml up -d
 ```
 
 {: .note }
-Pokud byste chtěli aplikaci naplnit testovacími daty (uživatelé s různým oprávněním, články, komentáře, tickety od uživatelů...) tak můžete spustit [seleniový test](https://github.com/svjis/svjis-selenium) který testovací data vyrobí. Předpokladem je že máte na počítači nainstalovanou `Javu` a `Maven`.
+Pokud byste chtěli aplikaci naplnit vzorovými daty (uživatelé s různým oprávněním, články, komentáře, tickety od uživatelů...) tak můžete spustit [seleniový test](https://github.com/svjis/svjis-selenium) který vzorová data vyrobí. Předpokladem je že máte na počítači nainstalovanou `Javu` a `Maven`.
