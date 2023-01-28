@@ -9,7 +9,7 @@ has_children: true
 
 Instalaci systému je možné provést několika způsoby:
 
-* __Spuštění pomocí docker-compose__ - preferovaná varianta
+* __Spuštění pomocí docker-compose__ je preferovaná varianta:
   * __Developerská konfigurace__ - pro vývojáře nebo pro rychlé vyzkoušení aplikace
   * __Produkční konfigurace__ - plnohodnotná instalace pokud jste se rozhodli aplikaci nasadit provozovat pro vaše SVJ
 * __Spuštění v Kubernetes__ - pokud chcete aplikaci nainstalovat na Kubernetes cluster
