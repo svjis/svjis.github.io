@@ -12,7 +12,7 @@ Docker compose je nejjednodušší a nejrychlejší způsob jak SVJIS spustit a 
 
 Pokud si chcete aplikaci jen vyzkoušet na vašem počítači, tak pro vás bude nejjednodušší a nejrychlejší developerská konfigurace.
 
-Nejprve si naklonujte projekt [svjis-docker](https://github.com/svjis/svjis-docker).
+Nejprve si naklonujte projekt [svjis-docker](https://github.com/svjis/svjis-docker). Buď ručně - zelené tlačítko _Code_ a _Dodnload ZIP_, nebo pomocí gitu:
 
 ```
 git clone https://github.com/svjis/svjis-docker.git
@@ -28,7 +28,7 @@ cd docker-compose
 docker-compose -f svjis-dev.yml up -d
 ```
 
-Tím se stáhnou docker obrazy pro aplikaci a pro databázi a spustí se v kontajneru. Aplikaci jsme spustili poprvé a tak je ještě potřeba vytvořit databázi. 
+Nyní se stáhnou docker obrazy pro aplikaci a pro databázi a spustí se v kontajneru. Aplikaci jsme spustili poprvé a tak je ještě potřeba vytvořit databázi. 
 
 Stáhněte si aktuální databázové schema [database.sql](https://raw.githubusercontent.com/svjis/svjis/master/db_schema/database.sql) a zkopírujte ho do adresáře `docker-compose`. To můžete udělat buď ručně nebo následujícím příkazem.
 
