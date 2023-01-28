@@ -7,13 +7,13 @@ parent: Instalace
 
 # Docker compose - produkční konfigurace
 
-Co budete potřebovat? 
+## Co budete potřebovat? 
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop).
 * Zaregistrované doménové jméno pro vaší aplikaci.
-* Administrátorské prřihlášení do vašeho domácího routeru abyste mohli nastavit _port forwarding_ na váš počítač.
+* Administrátorské přihlášení do vašeho domácího routeru abyste mohli nastavit _port forwarding_ na váš počítač.
 
-Pokud jste se rozhodli aplikaci nainstalovat a vystavit pro uživatele na internetu pak budete potřebovat nakonfigurovat doménu na které aplikace poběží a získat pro ní certifikát.
+## Zprovoznění aplikace
 
 Nejprve si naklonujte projekt [svjis-docker](https://github.com/svjis/svjis-docker). Buď ručně - zelené tlačítko _Code_ a _Dodnload ZIP_, nebo pomocí gitu:
 
@@ -55,16 +55,27 @@ Nakonec v kontajneru spusťte skript na vytvoření databáze.
 docker exec -it svjis_db-prod bash "/firebird/create-schema.sh"
 ```
 
-Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese `https://<vase.domena>` ale certifikát není platný. 
+Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese http://localhost:8080. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
 
-Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
+{: .warning }
+Defaultní heslo admina změňte v __Osobní nastavení - Změna hesla__ ještě před připojením webu na internet.
+
+Zároveň apache poslouchá na http://<vase_domena>:8181 a na https://<vase_domena>:443. Nicméně zatím nemáme zprovozněnou doménu ani platný certifikát.
+
+{: .note }
+Port 8181 byl zvolen místo standardního portu 80 protože ten nemusí být na daném hostu vždy k dispozici. Port můžete případně změnit v souboru `httpd_conf/httpd.conf` a pak aplikaci restartovat.
+
+## Vypublikování aplikace na internet
+
+Zjistěte si vaší veřejnou IP adresu, třeba zde https://www.mojeip.cz/ a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou ip (případně CNAME záznam na již existující hostname vaší IP adresy).
+
+Zjistěte si IP adresu vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP server přiřazoval počítači vždy stejnou IP. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na <interní_ip_vašeho_počítače> a port 8181 a požadavky na port 443 přeposílal <interní_ip_vašeho_počítače> a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
+
+Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange pro ověření domény nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
 
 ```
 docker-compose -f svjis-dev.yml down
 docker-compose -f svjis-dev.yml up -d
 ```
 
-Nyní by měl být certifikát na adrese `https://<vase.domena>` platný. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
-
-{: .warning }
-Defaultní heslo admina změňte v __Osobní nastavení - Změna hesla__ co nedříve - nejlépe ještě před připojením webu na internet.
+Nyní by měl být certifikát na adrese `https://<vase.domena>` platný.
