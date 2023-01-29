@@ -8,7 +8,7 @@ parent: Instalace
 # Instalace na fyzický nebo virtuální server
 
 {: .highlight }
-Tento návod potřebuje aktualizovat na novější verze Firebirdu a Tomcatu. V novějších verzích se pak některé příkazy mohou trochu lišit.
+Tento návod potřebuje aktualizovat na novější verze Firebirdu a Tomcatu. V novějších verzích se pak některé příkazy mohou trochu lišit. Aktuální verze aplikace je testovaná na Firebird 3, Tomcat 9 a Java 8.
 
 ## Databáze Firebird
 
