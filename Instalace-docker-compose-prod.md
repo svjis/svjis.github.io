@@ -77,8 +77,8 @@ Zjistěte si jaká je interní IP adresa vašeho počítače uvnitř vaší sít
 Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange pro ověření domény nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
 
 ```
-docker-compose -f svjis-dev.yml down
-docker-compose -f svjis-dev.yml up -d
+docker-compose -f svjis-prod.yml down
+docker-compose -f svjis-prod.yml up -d
 ```
 
 Nyní by měl být certifikát na adrese `https://<vase.domena>` platný.
