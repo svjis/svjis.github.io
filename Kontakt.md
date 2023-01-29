@@ -6,6 +6,7 @@ nav_order: 6
 
 # Kontakt
 
-Navštivte [diskuzi](https://github.com/orgs/svjis/discussions) na GitHubu. 
+{: .highlight }
+Své dotazy můžete nově pokládat v [diskuzích na GitHubu](https://github.com/orgs/svjis/discussions).
 
-Případně nás můžete kontaktovat na e-mailu: [svjis@seznam.cz](mailto:svjis@seznam.cz).
+Kontaktovat nás můžete také e-mailem: [svjis@seznam.cz](mailto:svjis@seznam.cz).

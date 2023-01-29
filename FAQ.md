@@ -6,6 +6,9 @@ nav_order: 5
 
 # Často kladené dotazy
 
+{: .highlight }
+Své dotazy můžete nově pokládat v [diskuzích na GitHubu](https://github.com/orgs/svjis/discussions).
+
 ## Chtěl bych zprovoznit Google Analytics
 
 Zprovoznění a nastavení služby Google Analytics proveďte následovně:
@@ -34,7 +37,3 @@ sql> quit;
 ```
 
 Počet SVJ běžících na jedné instanci není omezen.
-
-# Diskuze
-
-Pro další dotazy a odpovědi navštivte [diskuzi](https://github.com/orgs/svjis/discussions) na GitHubu. 
