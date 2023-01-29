@@ -7,6 +7,9 @@ parent: Instalace
 
 # Instalace na fyzický nebo virtuální server
 
+{: .highlight }
+Tento návod potřebuje aktualizovat na novější verze Firebirdu a Tomcatu. V novějších verzích se pak některé příkazy mohou trochu lišit.
+
 ## Databáze Firebird
 
 Stáhněte si z [firebird.org](https://firebirdsql.org/) databázi Firebird 2.5 a nainstalujte jí.
