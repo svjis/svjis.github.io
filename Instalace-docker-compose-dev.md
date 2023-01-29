@@ -19,7 +19,7 @@ git clone https://github.com/svjis/svjis-docker.git
 ```
 
 {: .important }
-V adresáři `docker-compose` je v souborech `svjis-dev.yml` a `create-schema.sh` defaultní heslo `change-it` - změňte si ho za nové.
+V adresáři `docker-compose` je v souborech `svjis-dev.yml` a `create-schema.sh` defaultní heslo k databázi `change-it` - změňte si ho za nové.
 
 Přepněte se do adresáře `docker-compose` a spusťe konfiguraci `svjis-dev.yml`.
 
@@ -47,7 +47,7 @@ docker cp ./create-schema.sh svjis_db:/firebird/
 Nakonec v kontajneru spusťte skript na vytvoření databáze.
 
 ```
-docker exec -it svjis_db bash "/firebird/create-schema.sh"
+docker exec svjis_db bash "/firebird/create-schema.sh"
 ```
 
 Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese http://localhost:8080. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.

@@ -25,9 +25,9 @@ git clone https://github.com/svjis/svjis-docker.git
 ```
 
 {: .important }
-V adresáři `docker-compose` je v souborech `svjis-prod.yml` a `create-schema.sh` defaultní heslo `change-it` - změňte si ho za nové.
+V adresáři `docker-compose` je v souborech `svjis-prod.yml` a `create-schema.sh` defaultní heslo k databázi `change-it` - změňte si ho za nové.
 
-V souborech `httpd_conf/httpd.conf` a `httpd_conf/httpd-ssl.conf` je konfigurace serveru Apache, který slouží jako reverzní proxy server a implementuje ssl certifikáty. Najděte v těchto souborech všechny výskyty `svjis.com` a zaměňte je za doménu na které váš server poběží.
+V souborech `httpd_conf/httpd.conf` a `httpd_conf/httpd-ssl.conf` je konfigurace serveru Apache, který slouží jako reverzní proxy server a implementuje ssl certifikáty. Najděte v těchto dvou souborech všechny výskyty `svjis.com` a zaměňte je za doménu na které váš server poběží.
 
 Přepněte se do adresáře `docker-compose` a spusťe konfiguraci `svjis-prod.yml`.
 
@@ -55,7 +55,7 @@ docker cp ./create-schema.sh svjis_db-prod:/firebird/
 Nakonec v kontajneru spusťte skript na vytvoření databáze.
 
 ```
-docker exec -it svjis_db-prod bash "/firebird/create-schema.sh"
+docker exec svjis_db-prod bash "/firebird/create-schema.sh"
 ```
 
 Nyní máme vytvořenou prázdnou databázi a aplikace běží na adrese http://localhost:8080. Do aplikace se přihlásíte jménem `admin` a heslem `masterkey`.
@@ -70,9 +70,9 @@ Port 8181 byl zvolen místo standardního portu 80 protože ten nemusí být na 
 
 ## Vypublikování aplikace na internet
 
-Zjistěte si vaší veřejnou IP adresu, třeba zde [https://www.mojeip.cz/](https://www.mojeip.cz/) a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou IP adresu (případně CNAME záznam na již existující hostname vaší IP adresy).
+Zjistěte si jaká je vaše veřejná IP adresa, třeba zde [https://www.mojeip.cz/](https://www.mojeip.cz/) a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou IP adresu (případně CNAME záznam na již existující hostname vaší IP adresy).
 
-Zjistěte si IP adresu vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP server přiřazoval počítači vždy stejnou IP. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na _interní_ip_vašeho_počítače_ a port 8181 a požadavky na port 443 přeposílal _interní_ip_vašeho_počítače_ a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
+Zjistěte si jaká je interní IP adresa vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP služba přiřazovala počítači vždy stejnou interní IP adresu. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na _interní_ip_vašeho_počítače_ a port 8181 a požadavky na port 443 přeposílal _interní_ip_vašeho_počítače_ a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
 
 Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange pro ověření domény nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
 
