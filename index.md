@@ -8,6 +8,9 @@ nav_order: 1
 
 SVJIS je open source CMS (Content management system) vyvíjený pro potřeby SVJ tak, aby zjednodušil komunikaci mezi vlastníky a výborem, umožňoval nahlašovat závady a pomáhal udržovat aktuální evidenci vlastníků a jednotek.
 
+{: .highlight }
+Systém je 100% free - je bez reklam, kdokoliv ho může používat zdarma, dále ho šířit nebo ho upravovat.
+
 ![front page](gfx/front-page-small.png)
 
 * [Vlastnosti systému](Vlastnosti.md)
