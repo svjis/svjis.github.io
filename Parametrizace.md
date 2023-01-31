@@ -114,3 +114,6 @@ Zde jsou definované gloální parametry pro společenství
 ## 3. Lokalizace
 
 Ve výhozím stavu systém podporuje dva jazyky - Angličtinu a Češtinu. Pro přidání dalšího jazyka je potřeba přidat nový jazyk do tabulky `LANGUAGE` a doplnit pro něj překlady v tabulce `LANGUAGE_DICTIONARY`.
+
+{: .note }
+Pokud byste chtěli aplikaci lokalizovat do dalšího jazyka tak prozkoumejte soubor [database.sql](https://github.com/svjis/svjis/blob/bf3b1a788a9740a20a3a9dc5765c1621a18ee31b/db_schema/database.sql#L1587). Případný pull request je vítaný.
