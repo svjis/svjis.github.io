@@ -82,3 +82,5 @@ docker-compose -f svjis-prod.yml up -d
 ```
 
 Nyní by měl být certifikát na adrese `https://<vase.domena>` platný.
+
+Pokračujte [parametrizací](Parametrizace.md) aplikace.

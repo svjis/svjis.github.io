@@ -96,4 +96,4 @@ V adresáři `target` naleznete binárku `SVJIS-1.5.0-RELEASE.war`. Tu zkopíruj
 http://localhost:8080/SVJIS-1.5.0-RELEASE/
 ```
 
-Pokud systém na uvedené adrese běží, tak ho nyní můžete naparametrizovat.  
+Pokud systém na uvedené adrese běží, tak ho nyní můžete [naparametrizovat](Parametrizace.md).  
