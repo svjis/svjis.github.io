@@ -6,13 +6,17 @@ nav_order: 4
 
 # Parametrizace
 
-Systém SVJIS umožňuje provozování více společenství v jedné instanci. Systém se pokusí rozeznat společenství ke kterému přistupujete dle doménového jména (viz. Administrace - Společenství). Pokud se systému nepodaří podle domény společenství poznat, tak nabídne seznam všech společenství a nechá vybrat uživatele.
+{: .highlight }
+Aplikace SVJIS umožňuje provozování více společenství v jedné instanci. Systém se nejprve pokusí rozeznat společenství ke kterému přistupujete dle doménového jména v url prohlížeče které porovná s údajem vyplněným v _Administrace - Společenství_. Pokud se systému nepodaří podle domény společenství poznat, tak nabídne seznam všech společenství a nechá vybrat uživatele.
 
 ## 1. První kroky
 
 ### 1.1 Přihlášení a změna výchozího hesla administrátora
 
 Výchozí uživatel je `admin` a heslo je `masterkey`. Jakmile se přihlásíte, tak v menu `Administrace - Uživatelé` změňte heslo.
+
+{: .important }
+Výchozí heslo administrátora změňte co nejdříve.
 
 ### 1.2 Založení nového uživatele
 
