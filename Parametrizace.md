@@ -42,7 +42,7 @@ Na stránce seznam jednotek vyplňte jednotky tak jak jsou evidované v katastru
 
 ### 2.4 Seznam uživatelů
 
-Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživatele. Uživatele není možné smazat, pouze zakázat. Každý uživatel má přiřazenou právě jednu roli, která definuje jeho oprávnění v systému. 
+Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživatele. Uživatele není možné smazat, pouze zakázat. Pokud zakládáte nového uživatele, nevyplníte mu heslo a zaškrtnete _Odeslat přihlášení e-mailem_, tak se mu heslo vygeneruje automaticky a pošle e-mailem (je třeba mít ve vlastnostech naparametrizovaný _smtp server_).
 
 #### 2.4.1 Anonymní uživatel
 
