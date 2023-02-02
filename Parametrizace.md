@@ -16,26 +16,26 @@ Aplikace SVJIS umožňuje provozování více společenství v jedné instanci. 
 1. TOC
 {:toc}
 
-## 1. První kroky
+## První kroky
 
-### 1.1 Přihlášení a změna výchozího hesla administrátora
+### Přihlášení a změna výchozího hesla administrátora
 
 Výchozí uživatel je `admin` a heslo je `masterkey`. Jakmile se přihlásíte, tak v menu `Administrace - Uživatelé` změňte heslo.
 
 {: .important }
 Výchozí heslo administrátora změňte co nejdříve.
 
-### 1.2 Založení nového uživatele
+### Založení nového uživatele
 
 V menu `Administrace - Uživatelé` si založte svůj osobní účet.
 
-## 2. Administrace
+## Administrace
 
-### 2.1 Společenství
+### Společenství
 
 Na stránce společenství vyplňte adresu a kontaktní údaje vašeho společenství. Do pole `Internetová doména` vyplňte doménu na které stránky společenství poběží (např. www.svj-slezska.cz). Systém podporuje více společenství v jedné instanci a podle této domény pak pozná ke kterému společenství přistupujete. 
 
-### 2.2 Dům
+### Dům
 
 Na stránce dům vyplňte údaje dle katastru nemovitostí.
 
@@ -43,23 +43,23 @@ Obrázek v hlavičce webu o rozměrech 940 x 94 bodů. Jako předlohu můžete p
 * [Obrázek ve formátu PNG](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.png)
 * [Obrázek ve formátu XCF](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.xcf) (Gimp)
 
-### 2.3 Seznam jednotek
+### Seznam jednotek
 
 Na stránce seznam jednotek vyplňte jednotky tak jak jsou evidované v katastru nemovitostí včetně podílů.
 
-### 2.4 Seznam uživatelů
+### Seznam uživatelů
 
 Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživatele. Uživatele není možné smazat, pouze zakázat. Pokud zakládáte nového uživatele, nevyplníte mu heslo a zaškrtnete _Odeslat přihlášení e-mailem_, tak se mu heslo vygeneruje automaticky a pošle e-mailem (je třeba mít ve vlastnostech naparametrizovaný _smtp server_).
 
-#### 2.4.1 Anonymní uživatel
+#### Anonymní uživatel
 
 Mezi uživateli je jeden speciální uživatel (anonymní uživatel), který reprezentuje nepřihlášeného uživatele. Tento uživatel by měl být vždy zakázaný aby se na něj nedalo explicitně přihlásit. Anonymní uživatel má přiřazenou speciální roli, na které je možné nastavovat oprávnění a tím řídit co je pro nepřihlášeného uživatele viditelné a co má povolené.  
 
-### 2.5 Seznam rolí
+### Seznam rolí
 
 Na stránce rolí můžete vytvářet a uproavovat práva jednotlivých rolí. V detailu každé role je možné vybrat oprávnění které má role povolené.
 
-#### 2.5.1 Seznam oprávnění
+#### Seznam oprávnění
 
 | Oprávnění                  | Popis                                       |
 | -------------------------- | ------------------------------------------- |
@@ -85,7 +85,7 @@ Na stránce rolí můžete vytvářet a uproavovat práva jednotlivých rolí. V
 | menu_adverts               | Právo vidět menu Inzeráty                   |
 | can_insert_advert          | Právo vkládat nové inzeráty                 |
 
-### 2.6 Vlastnosti
+### Vlastnosti
 
 Zde jsou definované gloální parametry pro společenství
 
@@ -118,7 +118,7 @@ Zde jsou definované gloální parametry pro společenství
 | mail.template.lost.password              | Šablona pro zaslání resetovaného hesla.                                               |
 | permanent.login.hours                    | Maximální doba trvání přihlášení v hodinách.                                          |
 
-## 3. Lokalizace
+## Lokalizace
 
 Ve výhozím stavu systém podporuje dva jazyky - Angličtinu a Češtinu. Pro přidání dalšího jazyka je potřeba přidat nový jazyk do tabulky `LANGUAGE` a doplnit pro něj překlady v tabulce `LANGUAGE_DICTIONARY`.
 
