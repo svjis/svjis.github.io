@@ -10,6 +10,7 @@ nav_order: 5
 ## Obsah
 {: .no_toc .text-delta }
 
+1. TOC
 {:toc}
 
 
@@ -36,7 +37,7 @@ Obnovu databáze je potřeba udělat při odpojené aplikaci. Postupujte podle n
 1. nakonec spusťte aplikaci `docker-compose -f svjis-prod.yml up -d`
 
 
-## Jak na mé instanci vytvořím další společenství?
+## Jak na dané instanci vytvořit další společenství
 
 Pro vytvoření dalšího SVJ se přihlašte do databáze a spusťte proceduru `EXECUTE PROCEDURE SP_CREATE_COMPANY 'New Company'; COMMIT;`.
 Pokud máte instalaci v `docker-compose` tak se připojte do databázového kontajneru následujícím způsobem:

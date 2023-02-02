@@ -13,6 +13,7 @@ Své dotazy můžete nově pokládat v [diskuzích na GitHubu](https://github.co
 ## Obsah
 {: .no_toc .text-delta }
 
+1. TOC
 {:toc}
 
 ## Chtěl bych zprovoznit Google Analytics
