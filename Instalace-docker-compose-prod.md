@@ -70,10 +70,13 @@ Port 8181 byl zvolen místo standardního portu 80 protože ten nemusí být na 
 
 ## Vypublikování aplikace na internet
 
+### Veřejná adresa a DNS
 Zjistěte si jaká je vaše veřejná IP adresa, třeba zde [https://www.mojeip.cz/](https://www.mojeip.cz/) a ve správě vaší domény si vytvořte A záznam směřující na vaší veřejnou IP adresu (případně CNAME záznam na již existující hostname vaší IP adresy).
 
+### Interní adresa port forwarding
 Zjistěte si jaká je interní IP adresa vašeho počítače uvnitř vaší sítě, pak se přihlašte do vašeho routeru a zajistěte aby DHCP služba přiřazovala počítači vždy stejnou interní IP adresu. V routeru zároveň nastavte _port forwarding_ tak, aby požadavky na port 80 router přeposílal na _interní_ip_vašeho_počítače_ a port 8181 a požadavky na port 443 přeposílal _interní_ip_vašeho_počítače_ a port 443. Nyní by měla aplikace být dostupná z internetu ale prohlížeč si bude stěžovat na neplatný certifikát.
 
+### SSL certifik8t
 Zvolte si váš oblíbený certbot který se bude starat o certifikáty - já používám například [getssl](https://github.com/srvrco/getssl). Challange pro ověření domény nasměrujte do adresáře `acme-challenge` a vygenerovaný certifikát a klíč nesměrujte do adresáře `httpd_conf`. Jakmile máte vygenerovaný certifikát tak je potřeba server restartovat.
 
 ```

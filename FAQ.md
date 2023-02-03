@@ -29,3 +29,9 @@ Vložení obrázku do textu se provede následovně:
 
 * Obrázek (obrázky) připojte k článku jako přílohu
 * Do textu, kde má být obrázek umístěn, napište jeho název ve složených závorkách. Například takto `{foto1.jpg}`
+
+## Jak nastavím aplikaci aby byla v angličtině?
+
+Každý uživatel má v profilu nastavený preferovaný jazyk. Ten lze zvolit při založení uživatele a uživatel si ho může kdykoliv později změnit. Pokud chcete změnit jazyk pro nepřihlášeného uživatele, tak běžte do _Administrace - Seznam uživatelů - zaškrtávátko zobrazit zakázané uživatele_, upravte profil uživatele _Anonymous user_ a zvolte u něj jazyk angličtina.
+
+Pokud chcete přidat více jazyků tak prostudujte kapitolu [Parametrizace](Parametrizace.md) - Lokalizace.
