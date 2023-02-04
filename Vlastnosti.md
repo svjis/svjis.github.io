@@ -16,6 +16,7 @@ nav_order: 2
 * fulltextové vyhledávání v článcích
 * kategorizace článků podle oblastí (smlouvy, zápisy, ...)
 * možnost povolení diskuzí pod článkem
+* krátké novinky na hlavní stránce
 
 ## Hromadné rozesílání e-mailových upozornění
 
@@ -23,12 +24,13 @@ nav_order: 2
 
 ## Ankety
 
-* prosté hlasování podle počtu hlasujících
+* hlasování podle počtu hlasujících - výsledkem je jmenný seznam hlasujících a jejích hlasování
 
 ## Hlášení a sledování závad
 
 * umožňuje vlastníkům nahlásit závadu na domě
 * sledovat aktuální seznam závad a jejich řešení
+* diskuze v tiketu závady
 
 ## Databáze vlastníků a kontaktů
 
