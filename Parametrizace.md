@@ -99,7 +99,7 @@ Zde jsou definované gloální parametry pro společenství
 | article.top.size                         | Počet položek v boxu "Nejčtenější články".                                            |
 | error.report.recipient                   | E-Mail příjemce reportu o chybách aplikace.                                           |
 | faults.page.size                         | Počet hlášení závad na stránce.                                                       |
-| google.analytics.id                      | Google analytics Id.                                                                  |
+| google.analytics.id                      | Google analytics Id. [^1]                                                             |
 | http.meta.description                    | Http meta popis. (používají vyhledávače)                                              |
 | http.meta.keywords                       | Http meta klíčová slova. (používají vyhledávače)                                      |
 | mail.login                               | Login k účtu odchozí pošty smtp.                                                      |
@@ -118,6 +118,7 @@ Zde jsou definované gloální parametry pro společenství
 | mail.template.lost.password              | Šablona pro zaslání resetovaného hesla.                                               |
 | permanent.login.hours                    | Maximální doba trvání přihlášení v hodinách.                                          |
 
+[^1]: Pokud máte v zabezpečených částech webu citlivý obsah tak Google Analytic raději nepoužívejte.
 ## Lokalizace
 
 Ve výhozím stavu systém podporuje dva jazyky - Angličtinu a Češtinu. Pro přidání dalšího jazyka je potřeba přidat nový jazyk do tabulky `LANGUAGE` a doplnit pro něj překlady v tabulce `LANGUAGE_DICTIONARY`.

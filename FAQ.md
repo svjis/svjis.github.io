@@ -23,6 +23,9 @@ Zprovoznění a nastavení služby Google Analytics proveďte následovně:
 * Zaregistrujte si službu Google Analytics pro vaší doménu a získejte její id. Například `UA-1234567-1`.
 * Přejděte do Administrace - Vlastnosti a nastavte vlastnost google.analytics.id na id, které jste získali.
 
+{: .note }
+Pokud máte v zabezpečených částech webu citlivý obsah tak Google Analytic raději nepoužívejte.
+
 ## Jak vložím obrázek do článku?
 
 Vložení obrázku do textu se provede následovně:
