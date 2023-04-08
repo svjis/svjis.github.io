@@ -63,7 +63,7 @@ Stáhněte si [java development kit](https://www.java.com/) (jdk8) a nainstalujt
 JAVA_HOME=C:\Program Files\Java\jdk1.8.0_191
 ```
 
-Stáhněte si [Apache Tomcat 9](http://tomcat.apache.org/) a nainstalujte. Do souboru `catalina.properties` napište heslo pro databázového uživatele web.
+Stáhněte si [Apache Tomcat 9](https://tomcat.apache.org/download-90.cgi) a nainstalujte. Do souboru `catalina.properties` napište heslo pro databázového uživatele web.
 
 ```
 db.server=localhost
