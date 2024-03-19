@@ -7,6 +7,9 @@ has_children: true
 
 # Instalace
 
+{: .highlight }
+Projekt se aktuálně přepisuje do Pythonu a frameworku Django. Pokud si chcete vyzkoušet pythonovskou verzi tak pokračujte [zde](https://github.com/svjis/svjis-py).
+
 Instalaci systému je možné provést několika způsoby:
 
 * __Spuštění pomocí docker-compose__ je preferovaná varianta:
