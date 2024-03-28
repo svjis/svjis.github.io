@@ -40,6 +40,7 @@ python manage.py svjis_setup
 ```
 
 Zkompilujte překlady.
+
 {: .highlight }
 Abyste mohli zkompilovat překlady, tak budete potřebovat nainstalovanou utilitu `gettext` (vyzkoušejte zda jí máte nainstalovanou `gettext --version`). V prostředí linuxu jí nainstalujete příkazem `sudo apt-get install gettext`, v prostředí Windows je například součástí balíku [git-scm](https://git-scm.com/downloads). Kompilaci překladů můžete také přeskočit a v takovém případě bude aplikace pouze v angličtině.
 
