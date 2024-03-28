@@ -16,15 +16,6 @@ Své dotazy můžete nově pokládat v [diskuzích na GitHubu](https://github.co
 1. TOC
 {:toc}
 
-## Chtěl bych zprovoznit Google Analytics
-
-Zprovoznění a nastavení služby Google Analytics proveďte následovně:
-
-* Zaregistrujte si službu Google Analytics pro vaší doménu a získejte její id. Například `UA-1234567-1`.
-* Přejděte do Administrace - Vlastnosti a nastavte vlastnost google.analytics.id na id, které jste získali.
-
-{: .note }
-Pokud máte v zabezpečených částech webu citlivý obsah tak Google Analytic raději nepoužívejte.
 
 ## Jak vložím obrázek do článku?
 
@@ -35,6 +26,6 @@ Vložení obrázku do textu se provede následovně:
 
 ## Jak nastavím aplikaci aby byla v angličtině?
 
-Každý uživatel má v profilu nastavený preferovaný jazyk. Ten lze zvolit při založení uživatele a uživatel si ho může kdykoliv později změnit. Pokud chcete změnit jazyk pro nepřihlášeného uživatele, tak běžte do _Administrace - Seznam uživatelů - zaškrtávátko zobrazit zakázané uživatele_, upravte profil uživatele _Anonymous user_ a zvolte u něj jazyk angličtina.
+Jazyk lokalizace se volí automaticky podle nastavení v prohlížeči uživatele. Pokud se Vám tedy zobrazuje česká lokalizace a vy preferujete anglickou, tak změňte nastavení Vašeho prohlížeče tak, aby preferoval angličtinu před češtinou.
 
-Pokud chcete přidat více jazyků tak prostudujte kapitolu [Parametrizace](Parametrizace.md) - Lokalizace.
+Pokud chcete přidat více jazyků tak prostudujte kapitolu [How To](HowTo.md) - Jak vytvořit lokalizaci pro další jazyk.

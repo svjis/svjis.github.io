@@ -7,9 +7,6 @@ nav_order: 4
 # Parametrizace
 {: .no_toc }
 
-{: .highlight }
-Aplikace SVJIS umožňuje provozování více společenství v jedné instanci. Systém se nejprve pokusí rozeznat společenství ke kterému přistupujete dle doménového jména v url prohlížeče které porovná s údajem vyplněným v _Administrace - Společenství_. Pokud se systému nepodaří podle domény společenství poznat, tak nabídne seznam všech společenství a nechá vybrat uživatele.
-
 ## Obsah
 {: .no_toc .text-delta }
 
@@ -25,6 +22,32 @@ Výchozí uživatel je `admin` a heslo je `masterkey`. Jakmile se přihlásíte,
 {: .important }
 Výchozí heslo administrátora změňte co nejdříve.
 
+### Nastavení serveru odchozí pošty SMTP
+
+Systém SVJIS při různých událostech používá odesílání emailů, proto je správné nastavení e-mailového rozhraní pro funkci aplikace důležité.
+
+Vytvořte nový soubor `svjis/svjis/local_settings.py` a v něm vytvořte následující konfiguraci.
+
+```
+TIME_ZONE = 'Europe/Prague'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'vas smtp server'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'username k vasemu smtp serveru'
+EMAIL_HOST_PASSWORD = 'heslo k vasemu smtp serveru'
+```
+
+Odesílání e-mailů se děje na pozadí - systém ukládá e-maily do fronty k odeslání, viz `Administrace - čekající zprávy`. Pro odeslání zprávy je třeba spustit následující příkaz:
+
+```
+python manage.py svjis_send_messages
+```
+
+Při testování aplikace ho můžete spouštět ručně. Při produkčním nastavení je potřeba nastavit plánovač systému (například cron) aby ho spoštěl v určitých itervalech (například každých 5 minut).
+
 ### Založení nového uživatele
 
 V menu `Administrace - Uživatelé` si založte svůj osobní účet.
@@ -33,15 +56,15 @@ V menu `Administrace - Uživatelé` si založte svůj osobní účet.
 
 ### Společenství
 
-Na stránce společenství vyplňte adresu a kontaktní údaje vašeho společenství. Do pole `Internetová doména` vyplňte doménu na které stránky společenství poběží (např. www.svj-slezska.cz). Systém podporuje více společenství v jedné instanci a podle této domény pak pozná ke kterému společenství přistupujete. 
-
-### Dům
-
-Na stránce dům vyplňte údaje dle katastru nemovitostí.
+Na stránce společenství vyplňte adresu a kontaktní údaje vašeho společenství. 
 
 Obrázek v hlavičce webu o rozměrech 940 x 94 bodů. Jako předlohu můžete použít:
 * [Obrázek ve formátu PNG](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.png)
 * [Obrázek ve formátu XCF](https://raw.githubusercontent.com/svjis/svjis-selenium/master/src/main/resources/Header_1.xcf) (Gimp)
+
+### Dům
+
+Na stránce dům vyplňte údaje dle katastru nemovitostí.
 
 ### Seznam jednotek
 
@@ -49,79 +72,39 @@ Na stránce seznam jednotek vyplňte jednotky tak jak jsou evidované v katastru
 
 ### Seznam uživatelů
 
-Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživatele. Uživatele není možné smazat, pouze zakázat. Pokud zakládáte nového uživatele, nevyplníte mu heslo a zaškrtnete _Odeslat přihlášení e-mailem_, tak se mu heslo vygeneruje automaticky a pošle e-mailem (je třeba mít ve vlastnostech naparametrizovaný _smtp server_).
+Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživatele. Uživatele není možné smazat, pouze zakázat. Pokud zakládáte nového uživatele, nevyplníte mu heslo a zaškrtnete _Odeslat přihlášení e-mailem_, tak se mu heslo vygeneruje automaticky a pošle e-mailem (je třeba mít naparametrizovaný _smtp server_).
 
-#### Anonymní uživatel
+### Seznam skupin
 
-Mezi uživateli je jeden speciální uživatel (anonymní uživatel), který reprezentuje nepřihlášeného uživatele. Tento uživatel by měl být vždy zakázaný aby se na něj nedalo explicitně přihlásit. Anonymní uživatel má přiřazenou speciální roli, na které je možné nastavovat oprávnění a tím řídit co je pro nepřihlášeného uživatele viditelné a co má povolené.  
-
-### Seznam rolí
-
-Na stránce rolí můžete vytvářet a uproavovat práva jednotlivých rolí. V detailu každé role je možné vybrat oprávnění které má role povolené.
+Na stránce skupin můžete vytvářet a uproavovat práva jednotlivých skupin. V detailu každé skupiny je možné vybrat oprávnění které má skupina povolené.
 
 #### Seznam oprávnění
 
-| Oprávnění                  | Popis                                       |
-| -------------------------- | ------------------------------------------- |
-| menu_administration        | Právo vidět menu Administrace               |
-| menu_articles              | Právo vidět menu Články                     |
-| menu_phone_list            | Právo vidět Seznam kontaktů                 |
-| menu_building_units        | Právo vidět menu Jednotky                   |
-| menu_personal_settings     | Právo vidět menu Osobní nastavení           |
-| menu_redaction             | Právo vidět menu Redakce                    |
-| menu_contact               | Právo vidět menu Kontakt                    |
-| can_insert_article_comment | Právo psát komentáře pod článkem            |
-| can_vote_inquiry           | Právo hlasovat v anketách                   |
-| can_write_html             | Právo používat html tagy                    |
-| redaction_articles         | Právo vytvářet a upravovat své články       |
-| redaction_articles_all     | Právo vytvářet a upravovat všechny články   |
-| redaction_mini_news        | Právo vytvářet a upravovat novinky          |
-| redaction_inquiry          | Právo vytvářet a upravovat ankety           |
-| redaction_menu             | Právo upravovat složky pro články           |
-| menu_fault_reporting       | Právo vidět menu Hlášení závad              |
-| fault_reporting_reporter   | Právo reportovat nové závady                |
-| fault_reporting_resolver   | Právo být řešitelem závad a uzavírat je     |
-| fault_reporting_comment    | Právo vkládat komentáře k závadám           |
-| menu_adverts               | Právo vidět menu Inzeráty                   |
-| can_insert_advert          | Právo vkládat nové inzeráty                 |
+| Oprávnění                    | Popis                                                       |
+| ---------------------------- | ----------------------------------------------------------- |
+| svjis_add_advert             | Právo vložit inzerát v menu inzeráty                        |
+| svjis_view_adverts_menu      | Právo vidět menu inzeráty                                   |
+| svjis_edit_article           | Právo editovat články v menu redakce                        |
+| svjis_view_redaction_menu    | Právo vidět menu redakce                                    |
+| svjis_add_article_comment    | Právo komentovat pod článkem                                |
+| svjis_edit_article_menu      | Právo editovat menu v menu redakce                          |
+| svjis_edit_admin_building    | Právo editovat informace o buově v menu administrace        |
+| svjis_edit_admin_company     | Právo editovat informace o společenství v menu administrace |
+| svjis_add_fault_comment      | Právo komentovat v tiketech v menu hlášení závad            |
+| svjis_fault_reporter         | Právo vytvářet tikety v menu hlášení závad                  |
+| svjis_fault_resolver         | Právo řešit tikety v menu hlášení závad                     |
+| svjis_view_fault_menu        | Právo vidět menu hlášení závad                              |
+| svjis_edit_article_news      | Právo editovat novinky v menu redakce                       |
+| svjis_edit_admin_preferences | Právo editovat preference v menu administrace               |
+| svjis_answer_survey          | Právo hlasovat v anketách                                   |
+| svjis_edit_survey            | Právo editovat ankety v menu redakce                        |
+| svjis_edit_admin_groups      | Právo editovat skupiny v menu administrace                  |
+| svjis_edit_admin_users       | Právo editovat uživatele v menu administrace                |
+| svjis_view_admin_menu        | Právo vidět menu administrace                               |
+| svjis_view_personal_menu     | Právo vidět menu osobní nastavení                           |
+| svjis_view_phonelist         | Právo vidět seznam kontaktů v menu kontakty                 |
 
 ### Vlastnosti
 
-Zde jsou definované gloální parametry pro společenství
+Zde jsou definované šablony e-mailových zpráva
 
-| Klíč                                     | Popis                                                                                 |
-| ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| advert.page.size                         | Počet inzerátů na stránce.                                                            |
-| anonymous.user.id                        | Id nepřihlášeného uživatele.                                                          |
-| article.menu.default.item                | Id výchozí složky článků. (0 = žádné výchozí menu)                                    |
-| article.page.size                        | Počet článků na stránce.                                                              |
-| article.top.months                       | Maximální historie položek v boxu "Nejčtenější články".                               |
-| article.top.size                         | Počet položek v boxu "Nejčtenější články".                                            |
-| error.report.recipient                   | E-Mail příjemce reportu o chybách aplikace.                                           |
-| faults.page.size                         | Počet hlášení závad na stránce.                                                       |
-| google.analytics.id                      | Google analytics Id. [^1]                                                             |
-| http.meta.description                    | Http meta popis. (používají vyhledávače)                                              |
-| http.meta.keywords                       | Http meta klíčová slova. (používají vyhledávače)                                      |
-| mail.login                               | Login k účtu odchozí pošty smtp.                                                      |
-| mail.password                            | Heslo k účtu odchozí pošty smtp.                                                      |
-| mail.sender                              | E-Mail, který bude uveden jako odesílající ve všech notifikacích posílaných systémem. |
-| mail.smtp                                | Server odchozí pošty smtp.                                                            |
-| mail.smtp.port                           | Port serveru odchozí pošty smtp.                                                      |
-| mail.smtp.ssl                            | SSL/TLS protokol serveru odchozí pošty. (true/false)                                  |
-| mail.template.article.notification       | Šablona notifikace pro upozornění na nový článek.                                     |
-| mail.template.comment.notification       | Šablona notifikace pro upozornění na nový komentář pod článkem.                       |
-| mail.template.fault.assigned             | Šablona notifikace pro upozornění na přiřazení tiketu řešiteli.                       |
-| mail.template.fault.closed               | Šablona notifikace pro upozornění na uzavření tiketu.                                 |
-| mail.template.fault.comment.notification | Šablona notifikace pro upozornění na nový komentář pod nahlášenou závadou.            |
-| mail.template.fault.notification         | Šablona notifikace pro upozornění na novou nahlášnou závadu.                          |
-| mail.template.fault.reopened             | Šablona notifikace pro upozornění na znovu otevření tiketu.                           |
-| mail.template.lost.password              | Šablona pro zaslání resetovaného hesla.                                               |
-| permanent.login.hours                    | Maximální doba trvání přihlášení v hodinách.                                          |
-
-[^1]: Pokud máte v zabezpečených částech webu citlivý obsah tak Google Analytic raději nepoužívejte.
-## Lokalizace
-
-Ve výhozím stavu systém podporuje dva jazyky - Angličtinu a Češtinu. Pro přidání dalšího jazyka je potřeba přidat nový jazyk do tabulky `LANGUAGE` a doplnit pro něj překlady v tabulce `LANGUAGE_DICTIONARY`.
-
-{: .note }
-Pokud byste chtěli aplikaci lokalizovat do dalšího jazyka tak prozkoumejte soubor [database.sql](https://github.com/svjis/svjis/blob/4b566e165bc2f13a6191babd770a750af5e5aa95/db_schema/database.sql#L1617). Případný pull request je vítaný.
