@@ -8,7 +8,7 @@ has_children: true
 # Instalace
 
 {: .highlight }
-Projekt se aktuálně přepisuje do Pythonu a frameworku Django. Pokud si chcete vyzkoušet pythonovskou verzi tak pokračujte [zde](https://github.com/svjis/svjis-py).
+Projekt se aktuálně přepisuje do Pythonu a frameworku Django. Pokud si chcete vyzkoušet pythonovskou verzi tak pokračujte [zde](https://github.com/svjis/svjis2).
 
 Instalaci systému je možné provést několika způsoby:
 
