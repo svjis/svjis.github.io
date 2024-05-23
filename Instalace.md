@@ -1,60 +1,253 @@
 ---
 layout: default
 title: Instalace
-nav_order: 3
+nav_order: 4
 ---
 
-# Instalace
+# Instalace na server
 
-Pro instalaci budete potřebovat [Python](https://www.python.org/downloads/) verzi 3.10 nebo vyšší. Aktuální nainstalovanou verzi můžete zkontrolovat příkazem `python --version`.
+Existuje více způsobů jak nasadit aplikaci na server a různé způsoby jsou popsané v [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/). 
 
-Naklonujte si projekt a přepněte se do adresáře repozitáře.
+Níže je popsaný příklad instalace SVJIS na Debian Linux s Apache serverem a Postgres databází.
+
+## Příklad instalace na server (Debian, Apache, Postgres)
+
+Následující příklad nainstaluje SVJIS na server `www.mysvj.cz` a předpokládá se že DNS server je již nakonfigurovaný.
+
+### 1. Nainstalujte aktualizace a utilitu sudo
 
 ```
+apt-get update
+apt-get upgrade
+apt-get install sudo
+```
+
+### 2. Instalace Postgresql
+
+```
+sudo apt-get install postgresql
+```
+
+Vytvoření uživatele `svjis_user` a databáze `svjis_db`
+
+```
+sudo -u postgres bash
+psql
+```
+
+```
+CREATE USER svjis_user WITH PASSWORD '***';
+CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
+```
+
+### 3. Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
+
+```
+sudo apt-get install apache2
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf mysvj.cz.conf
+sudo a2ensite mysvj.cz.conf
+sudo systemctl reload apache2
+```
+
+Upravte `mysvj.cz.conf` následujícím způsobem:
+
+```
+<VirtualHost *:80>
+    ServerAdmin admin@mysvj.cz
+    ServerName www.mysvj.cz
+    ServerAlias mysvj.cz
+    ServerSignature Off
+    DocumentRoot /opt/mysvj_cz/www
+    <Directory /opt/mysvj_cz/www>
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/mysvj_cz_error.log
+    CustomLog ${APACHE_LOG_DIR}/mysvj_cz_access.log combined
+</VirtualHost>
+```
+
+Vytvořte příslušné adresáře a soubory
+
+```
+sudo mkdir /opt/mysvj_cz
+sudo mkdir /opt/mysvj_cz/www
+sudo touch /opt/mysvj_cz/www/security.txt
+sudo touch /opt/mysvj_cz/www/robots.txt
+sudo systemctl reload apache2
+```
+
+### 4. Nainstalujte certbot
+
+Je potřeba aby byl DNS server nakonfigurovaný a oba záznamy `www.mysvj.cz` a `mysvj.cz` ukazovaly na náš server.
+
+```
+sudo apt-get install certbot
+sudo apt-get install python3-certbot-apache
+sudo certbot --apache -d www.mysvj.cz -d mysvj.cz
+sudo systemctl reload apache2
+```
+
+### 5. Instalace SVJIS
+
+```
+sudo apt-get install git
+cd /opt/mysvj_cz
 git clone https://github.com/svjis/svjis2.git
-cd svjis2
-```
-
-Vytvořte si virtuální prostředí a přepněte se do něj.
-
-```
-python -m venv venv
-# v Linuxu
+cd svjis2/
+sudo apt-get install python3.11-venv
+python3 -m venv venv
 source venv/bin/activate
-# ve Windows
-source venv/Scripts/activate
-```
-
-Nainstalujte závislosti.
-
-```
 pip install -r requirements.txt
+echo "psycopg" > local_requirements.txt
+pip install -r local_requirements.txt
 ```
 
-Vytvořte databázový model (spuštěním migrací) a základní parametrizaci SVJIS
+Nastavení lokálních parametrů
 
 ```
-cd svjis
+cd /opt/mysvj_cz/svjis2
+touch svjis/svjis/local_settings.py
+sudo chgrp -R www-data svjis/
+sudo chmod -R g+w svjis/
+```
+
+Upravte soubor `local_settings.py`
+```
+DEBUG = False
+SECRET_KEY = '***'
+ALLOWED_HOSTS = ['www.mysvj.cz']
+
+TIME_ZONE = 'Europe/Prague'
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        'NAME': 'svjis_db',
+        'USER': 'svjis_user',
+        'PASSWORD': '***',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+ADMINS = [('admin', 'admin@mysvj.cz'),]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mysvj.cz'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'info@mysvj.cz'
+EMAIL_HOST_PASSWORD = '***'
+```
+
+Migrace a dokončení nastavení SVJIS
+
+```
+cd /opt/mysvj_cz/svjis2/
+source venv/bin/activate
+cd svjis/
 python manage.py migrate
 python manage.py svjis_setup
-```
-
-Zkompilujte překlady.
-
-{: .highlight }
-Abyste mohli zkompilovat překlady, tak budete potřebovat nainstalovanou utilitu `gettext` (vyzkoušejte zda jí máte nainstalovanou `gettext --version`). V prostředí linuxu jí nainstalujete příkazem `sudo apt-get install gettext`, v prostředí Windows je například součástí balíku [git-scm](https://git-scm.com/downloads). Kompilaci překladů můžete také přeskočit a v takovém případě bude aplikace pouze v angličtině.
-
-```
+sudo apt install gettext
 python manage.py compilemessages
+python manage.py collectstatic
+sudo apt-get install libapache2-mod-wsgi-py3
 ```
 
-Aplikaci spustíte příkazem
+Upravte soubor `mysvj.cz-le-ssl.conf`
 
 ```
-python manage.py runserver
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerAdmin admin@mysvj.cz
+    ServerName www.mysvj.cz
+    ServerAlias mysvj.cz
+    ServerSignature Off
+
+    Alias /media /opt/mysvj_cz/svjis2/svjis/media
+    Alias /static /opt/mysvj_cz/svjis2/svjis/static
+    Alias /robots.txt /opt/mysvj_cz/www/robots.txt
+    Alias /.well-known/security.txt /opt/mysvj_cz/www/security.txt
+    Alias /favicon.ico /opt/mysvj_cz/www/favicon.ico
+
+    <Directory /opt/mysvj_cz/svjis2/svjis/media>
+        Require all granted
+    </Directory>
+
+    <Directory /opt/mysvj_cz/svjis2/svjis/static>
+        Require all granted
+    </Directory>
+
+    <Directory /opt/mysvj_cz/www>
+        Require all granted
+    </Directory>
+
+    <Directory /opt/mysvj_cz/svjis2/svjis/svjis>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    <Location "/robots.txt">
+        SetHandler None
+        Require all granted
+    </Location>
+
+    <Location "/.well-known/security.txt">
+        SetHandler None
+        Require all granted
+    </Location>
+
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} ^mysvj.cz$ [NC]
+    RewriteRule ^(.*)$ http://www.mysvj.cz/$1 [R=301,L]
+
+    WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
+    WSGIProcessGroup svjis
+    WSGIScriptAlias / /opt/mysvj_cz/svjis2/svjis/svjis/wsgi.py
+
+    ErrorLog ${APACHE_LOG_DIR}/mysvj_cz_error.log
+    CustomLog ${APACHE_LOG_DIR}/mysvj_cz_access.log combined
+
+Include /etc/letsencrypt/options-ssl-apache.conf
+SSLCertificateFile /etc/letsencrypt/live/www.mysvj.cz/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/www.mysvj.cz/privkey.pem
+
+</VirtualHost>
+</IfModule>
 ```
 
-Aplikace běží na adrese http://127.0.0.1:8000/ uživatel je admin heslo je masterkey. Heslo změňte v Osobní nastavení - Změna hesla.
+Restart Apache
 
-Uvedený způsob spuštění je vhodný pro rychlé vyzkoušení aplikace na Vašem počítači. Pokud chcete SVJIS nasadit na server do produkce tak si prostudujte [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/), kde naleznete několik variant jak aplikaci správně spustit v produkčním prostředí.
+```
+sudo systemctl restart apache2
+```
 
+Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo je masterkey. 
+
+{: .important }
+Heslo hned změňte v Osobní nastavení - Změna hesla.
+
+### 6. Nastavení odesílání e-mailů
+
+Vytvořte soubor `/opt/mysvj_cz/send_mails.sh`
+```
+cd /opt/mysvj_cz/svjis2
+source venv/bin/activate
+cd svjis
+python manage.py svjis_send_messages
+```
+
+Nastavení cronu
+
+```
+crontab -e
+```
+
+Přidejte následující řádek
+```
+*/5 * * * * bash -c /opt/mysvj_cz/send_mails.sh
+```

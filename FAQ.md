@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Často kladené dotazy
-nav_order: 6
+nav_order: 7
 ---
 
 # Často kladené dotazy
