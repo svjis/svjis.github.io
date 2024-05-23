@@ -6,7 +6,7 @@ nav_order: 3
 
 # Spuštění
 
-Pro s budete potřebovat [Python](https://www.python.org/downloads/) verzi 3.10 nebo vyšší. Aktuální nainstalovanou verzi můžete zkontrolovat příkazem `python --version`.
+Pro spuštění aplikace budete potřebovat [Python](https://www.python.org/downloads/) verzi 3.10 nebo vyšší. Aktuální nainstalovanou verzi můžete zkontrolovat příkazem `python --version`.
 
 Naklonujte si projekt a přepněte se do adresáře repozitáře.
 
@@ -56,5 +56,6 @@ python manage.py runserver
 
 Aplikace běží na adrese http://127.0.0.1:8000/ uživatel je admin heslo je masterkey. Heslo změňte v Osobní nastavení - Změna hesla.
 
+{: .highlight }
 Uvedený způsob spuštění je vhodný pro rychlé vyzkoušení aplikace na Vašem počítači. Pokud chcete SVJIS nasadit na server do produkce tak si prostudujte [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/), kde naleznete několik variant jak aplikaci správně spustit v produkčním prostředí.
 

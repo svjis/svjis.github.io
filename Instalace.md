@@ -228,7 +228,7 @@ sudo systemctl restart apache2
 
 Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo je masterkey. 
 
-{: .important }
+{: .warning }
 Heslo hned změňte v Osobní nastavení - Změna hesla.
 
 ### 6. Nastavení odesílání e-mailů
