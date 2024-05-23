@@ -21,7 +21,7 @@ Níže je popsaný příklad instalace SVJIS na Debian Linux s Apache serverem a
 
 Následující příklad nainstaluje SVJIS na server `www.mysvj.cz` a předpokládá se že DNS server je již nakonfigurovaný.
 
-### 1. Nainstalujte aktualizace a utilitu sudo
+### Nainstalujte aktualizace a utilitu sudo
 
 ```
 apt-get update
@@ -29,7 +29,7 @@ apt-get upgrade
 apt-get install sudo
 ```
 
-### 2. Instalace Postgresql
+### Instalace Postgresql
 
 ```
 sudo apt-get install postgresql
@@ -47,7 +47,7 @@ CREATE USER svjis_user WITH PASSWORD '***';
 CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
 ```
 
-### 3. Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
+### Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
 
 ```
 sudo apt-get install apache2
@@ -85,7 +85,7 @@ sudo touch /opt/mysvj_cz/www/robots.txt
 sudo systemctl reload apache2
 ```
 
-### 4. Nainstalujte certbot
+### Nainstalujte certbot
 
 Je potřeba aby byl DNS server nakonfigurovaný a oba záznamy `www.mysvj.cz` a `mysvj.cz` ukazovaly na náš server.
 
@@ -96,7 +96,7 @@ sudo certbot --apache -d www.mysvj.cz -d mysvj.cz
 sudo systemctl reload apache2
 ```
 
-### 5. Instalace SVJIS
+### Instalace SVJIS
 
 ```
 sudo apt-get install git
@@ -238,7 +238,7 @@ Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo 
 {: .warning }
 Heslo hned změňte v Osobní nastavení - Změna hesla.
 
-### 6. Nastavení odesílání e-mailů
+### Nastavení odesílání e-mailů
 
 Vytvořte soubor `/opt/mysvj_cz/send_mails.sh`
 ```
