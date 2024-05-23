@@ -6,7 +6,9 @@ nav_order: 4
 
 # Instalace na server
 
-Existuje více způsobů jak nasadit aplikaci na server a různé způsoby jsou popané v [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/). Níže je popsaný příklad instalace SVJIS na Linux Debian s Apache serverem a Postgres databází.
+Existuje více způsobů jak nasadit aplikaci na server a různé způsoby jsou popsané v [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/). 
+
+Níže je popsaný příklad instalace SVJIS na Debian Linux s Apache serverem a Postgres databází.
 
 ## Příklad instalace na server (Debian, Apache, Postgres)
 
@@ -35,7 +37,6 @@ psql
 
 ```
 CREATE USER svjis_user WITH PASSWORD '***';
-\l
 CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
 ```
 
@@ -106,8 +107,8 @@ pip install -r local_requirements.txt
 Nastavení lokálních parametrů
 
 ```
-touch svjis2/svjis/svjis/local_settings.py
-cd svjis2/
+cd /opt/mysvj_cz/svjis2
+touch svjis/svjis/local_settings.py
 sudo chgrp -R www-data svjis/
 sudo chmod -R g+w svjis/
 ```
@@ -137,7 +138,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mysvj.cz'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
-EMAIL_PORT = 587
+EMAIL_PORT = 25
 EMAIL_HOST_USER = 'info@mysvj.cz'
 EMAIL_HOST_PASSWORD = '***'
 ```
@@ -201,7 +202,6 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
     </Location>
 
     RewriteEngine on
-    
     RewriteCond %{HTTP_HOST} ^mysvj.cz$ [NC]
     RewriteRule ^(.*)$ http://www.mysvj.cz/$1 [R=301,L]
 
@@ -226,6 +226,11 @@ Restart Apache
 sudo systemctl restart apache2
 ```
 
+Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo je masterkey. 
+
+{: .important }
+Heslo hned změňte v Osobní nastavení - Změna hesla.
+
 ### 6. Nastavení odesílání e-mailů
 
 Vytvořte soubor `/opt/mysvj_cz/send_mails.sh`
@@ -240,5 +245,9 @@ Nastavení cronu
 
 ```
 crontab -e
+```
+
+Přidejte následující řádek
+```
 */5 * * * * bash -c /opt/mysvj_cz/send_mails.sh
 ```
