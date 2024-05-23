@@ -5,10 +5,17 @@ nav_order: 4
 ---
 
 # Instalace na server
+{: .no_toc }
 
 Existuje více způsobů jak nasadit aplikaci na server a různé způsoby jsou popsané v [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/). 
 
 Níže je popsaný příklad instalace SVJIS na Debian Linux s Apache serverem a Postgres databází.
+
+## Obsah
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Příklad instalace na server (Debian, Apache, Postgres)
 
