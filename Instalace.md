@@ -10,7 +10,7 @@ Existuje více způsobů jak nasadit aplikaci na server a různé způsoby jsou 
 
 ## Příklad instalace na server (Debian, Apache, Postgres)
 
-Následující příklad nainstaluje SVJIS na server `www.mysvj.cz`. Předpokládá se že DNS server je nakonfigurovaný.
+Následující příklad nainstaluje SVJIS na server `www.mysvj.cz` a předpokládá se že DNS server je již nakonfigurovaný.
 
 ### 1. Nainstalujte aktualizace a utilitu sudo
 
@@ -20,7 +20,26 @@ apt-get upgrade
 apt-get install sudo
 ```
 
-### 2. Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
+### 2. Instalace Postgresql
+
+```
+sudo apt-get install postgresql
+```
+
+Vytvoření uživatele `svjis_user` a databáze `svjis_db`
+
+```
+sudo -u postgres bash
+psql
+```
+
+```
+CREATE USER svjis_user WITH PASSWORD '***';
+\l
+CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
+```
+
+### 3. Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
 
 ```
 sudo apt-get install apache2
@@ -48,15 +67,17 @@ Upravte `mysvj.cz.conf` následujícím způsobem:
 </VirtualHost>
 ```
 
-Vytvořte příslušné adresáře
+Vytvořte příslušné adresáře a soubory
 
 ```
 sudo mkdir /opt/mysvj_cz
 sudo mkdir /opt/mysvj_cz/www
+sudo touch /opt/mysvj_cz/www/security.txt
+sudo touch /opt/mysvj_cz/www/robots.txt
 sudo systemctl reload apache2
 ```
 
-### 3. Nainstalujte certbot
+### 4. Nainstalujte certbot
 
 Je potřeba aby byl DNS server nakonfigurovaný a oba záznamy `www.mysvj.cz` a `mysvj.cz` ukazovaly na náš server.
 
@@ -67,7 +88,7 @@ sudo certbot --apache -d www.mysvj.cz -d mysvj.cz
 sudo systemctl reload apache2
 ```
 
-### 4. Instalace SVJIS
+### 5. Instalace SVJIS
 
 ```
 sudo apt-get install git
@@ -78,13 +99,8 @@ sudo apt-get install python3.11-venv
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-cd svjis/
-python manage.py migrate
-python manage.py svjis_setup
-sudo apt install gettext
-python manage.py compilemessages
-python manage.py collectstatic
-sudo apt-get install libapache2-mod-wsgi-py3
+echo "psycopg" > local_requirements.txt
+pip install -r local_requirements.txt
 ```
 
 Nastavení lokálních parametrů
@@ -124,6 +140,20 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@mysvj.cz'
 EMAIL_HOST_PASSWORD = '***'
+```
+
+Migrace a dokončení nastavení SVJIS
+
+```
+cd /opt/mysvj_cz/svjis2/
+source venv/bin/activate
+cd svjis/
+python manage.py migrate
+python manage.py svjis_setup
+sudo apt install gettext
+python manage.py compilemessages
+python manage.py collectstatic
+sudo apt-get install libapache2-mod-wsgi-py3
 ```
 
 Upravte soubor `mysvj.cz-le-ssl.conf`
@@ -190,37 +220,10 @@ SSLCertificateKeyFile /etc/letsencrypt/live/www.mysvj.cz/privkey.pem
 </IfModule>
 ```
 
-Reload Apache
+Restart Apache
 
 ```
-sudo systemctl reload apache2
-```
-
-### 5. Instalace Postgresql
-
-```
-sudo systemctl stop apache2
-sudo apt-get install postgresql
-```
-
-Vytvoření uživatele `svjis_user` a databáze `svjis_db`
-
-```
-sudo -u postgres bash
-psql
-```
-
-```
-CREATE USER svjis_user WITH PASSWORD '***';
-\l
-CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
-```
-
-Instalace ovladače
-
-```
-echo "psycopg" > /opt/mysvj_cz/svjis2/local_requirements.txt
-pip install -r local_requirements.txt
+sudo systemctl restart apache2
 ```
 
 ### 6. Nastavení odesílání e-mailů
