@@ -14,6 +14,7 @@ Systém je 100% free - je bez reklam, kdokoliv ho může používat zdarma, dál
 ![front page](gfx/front-page-small.png)
 
 * [Vlastnosti systému](Vlastnosti.md)
+* [Spuštění](Spusteni.md)
 * [Instalace systému](Instalace.md)
 * [Parametrizace](Parametrizace.md)
 * [Často kladené dotazy](FAQ.md)
