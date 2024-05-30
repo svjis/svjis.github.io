@@ -15,13 +15,6 @@ nav_order: 5
 
 ## První kroky
 
-### Přihlášení a změna výchozího hesla administrátora
-
-Výchozí uživatel je `admin` a heslo je `masterkey`. Jakmile se přihlásíte, tak v menu `Administrace - Uživatelé` změňte heslo.
-
-{: .important }
-Výchozí heslo administrátora změňte co nejdříve.
-
 ### Nastavení serveru odchozí pošty SMTP
 
 Systém SVJIS při různých událostech používá odesílání emailů, proto je správné nastavení e-mailového rozhraní pro funkci aplikace důležité.

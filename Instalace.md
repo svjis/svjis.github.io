@@ -157,7 +157,7 @@ cd /opt/mysvj_cz/svjis2/
 source venv/bin/activate
 cd svjis/
 python manage.py migrate
-python manage.py svjis_setup
+python manage.py svjis_setup --password <heslo pro uživatele admin>
 sudo apt install gettext
 python manage.py compilemessages
 python manage.py collectstatic
@@ -233,10 +233,7 @@ Restart Apache
 sudo systemctl restart apache2
 ```
 
-Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo je masterkey. 
-
-{: .warning }
-Heslo hned změňte v Osobní nastavení - Změna hesla.
+Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo je vámi dříve zadané heslo. 
 
 ### Nastavení odesílání e-mailů
 

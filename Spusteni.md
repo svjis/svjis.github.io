@@ -36,7 +36,7 @@ Vytvořte databázový model (spuštěním migrací) a základní parametrizaci 
 ```
 cd svjis
 python manage.py migrate
-python manage.py svjis_setup
+python manage.py svjis_setup --password <heslo pro uživatele admin>
 ```
 
 Zkompilujte překlady.
@@ -54,7 +54,7 @@ Aplikaci spustíte příkazem
 python manage.py runserver
 ```
 
-Aplikace běží na adrese http://127.0.0.1:8000/ uživatel je admin heslo je masterkey. Heslo změňte v Osobní nastavení - Změna hesla.
+Aplikace běží na adrese http://127.0.0.1:8000/ uživatel je admin heslo je vámi dříve zadané heslo.
 
 {: .highlight }
 Uvedený způsob spuštění je vhodný pro rychlé vyzkoušení aplikace na Vašem počítači. Pokud chcete SVJIS nasadit na server do produkce tak si prostudujte [Django dokumentaci](https://docs.djangoproject.com/en/5.0/howto/deployment/), kde naleznete několik variant jak aplikaci správně spustit v produkčním prostředí.
