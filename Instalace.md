@@ -210,7 +210,7 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
 
     RewriteEngine on
     RewriteCond %{HTTP_HOST} ^mysvj.cz$ [NC]
-    RewriteRule ^(.*)$ http://www.mysvj.cz/$1 [R=301,L]
+    RewriteRule ^(.*)$ http://www.mysvj.cz$1 [R=301,L]
 
     WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
     WSGIProcessGroup svjis
