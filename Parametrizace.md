@@ -92,6 +92,7 @@ Na stránce skupin můžete vytvářet a uproavovat práva jednotlivých skupin.
 | svjis_edit_admin_preferences | Právo editovat preference v menu administrace               |
 | svjis_answer_survey          | Právo hlasovat v anketách                                   |
 | svjis_edit_survey            | Právo editovat ankety v menu redakce                        |
+| svjis_edit_useful_link       | Právo editovat užitečné odkazy v menu redakce               |
 | svjis_edit_admin_groups      | Právo editovat skupiny v menu administrace                  |
 | svjis_edit_admin_users       | Právo editovat uživatele v menu administrace                |
 | svjis_view_admin_menu        | Právo vidět menu administrace                               |

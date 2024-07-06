@@ -43,6 +43,7 @@ Přepněte se do požadované verze
 ```
 git fetch
 git checkout v2.x.y
+git pull
 ```
 
 Proveďte upgrade
