@@ -29,3 +29,32 @@ Nakonec zkompilovat překlady
 ```
 python manage.py compilemessages
 ```
+
+## Jak upgradovat systém na novější verzi
+
+Pro upgradne systému na novější verzi postupujte takto:
+
+Aktivujte virtuální prostředi
+```
+source venv/bin/activate
+```
+
+Přepněte se do požadované verze
+```
+git fetch
+git checkout v2.x.y
+```
+
+Proveďte upgrade
+```
+pip install -r requirements.txt
+cd svjis/
+python manage.py migrate
+python manage.py compilemessages
+python manage.py collectstatic
+```
+
+Restartujte server
+```
+sudo systemctl restart apache2.service
+```
