@@ -107,8 +107,6 @@ sudo apt-get install python3.11-venv
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-echo "psycopg" > local_requirements.txt
-pip install -r local_requirements.txt
 ```
 
 Nastavení lokálních parametrů
