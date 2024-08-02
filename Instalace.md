@@ -4,6 +4,9 @@ title: Instalace
 nav_order: 4
 ---
 
+{: .highlight }
+Tato stránka popisuje instalaci na produkční server. Pokud si chcete aplikaci jen vyzkoušet na Vašem počítači, tak postupujte podle návodu na stránce [Spuštění](Spusteni.md).
+
 # Instalace na server
 {: .no_toc }
 
