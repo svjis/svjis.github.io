@@ -1,6 +1,6 @@
 ---
 layout: default
-title: How To
+title: Návody
 nav_order: 6
 ---
 
