@@ -29,3 +29,9 @@ Vložení obrázku do textu se provede následovně:
 Jazyk lokalizace se volí automaticky podle nastavení v prohlížeči uživatele. Pokud se Vám tedy zobrazuje česká lokalizace a vy preferujete anglickou, tak změňte nastavení Vašeho prohlížeče tak, aby preferoval angličtinu před češtinou.
 
 Pokud chcete přidat více jazyků tak prostudujte kapitolu [How To](HowTo.md) - Jak vytvořit lokalizaci pro další jazyk.
+
+## Jak můžu upravit vzhled aplikace?
+
+Vzhled aplikace lze upravit modifikací HTML šablon a statického obsahu (css, js ...). Šablony může spravovat kdokoli, kdo rozumí HTML, není nutná žádná znalost Pythonu. Více informací o HTML šablonách naleznete v [Django dokumentaci](https://docs.djangoproject.com/en/5.0/ref/templates/).
+
+V SVJIS projektu jsou HTML šablony uloženy v adresáři `/svjis/articles/templates` a ostatní statický obsah v adresáři `/svjis/articles/static`.
