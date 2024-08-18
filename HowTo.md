@@ -4,7 +4,7 @@ title: Návody
 nav_order: 6
 ---
 
-# How to
+# Návody
 {: .no_toc }
 
 ## Obsah

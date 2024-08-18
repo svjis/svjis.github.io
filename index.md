@@ -17,6 +17,7 @@ Systém je 100% free - je bez reklam, kdokoliv ho může používat zdarma, dál
 * [Spuštění](Spusteni.md)
 * [Instalace systému](Instalace.md)
 * [Parametrizace](Parametrizace.md)
+* [Návody](HowTo.md)
 * [Často kladené dotazy](FAQ.md)
 * [Kontakt](Kontakt.md)
  
