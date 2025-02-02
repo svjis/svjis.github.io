@@ -52,9 +52,7 @@ V menu `Administrace - Uživatelé` si založte svůj osobní účet.
 
 Na stránce společenství vyplňte adresu a kontaktní údaje vašeho společenství. 
 
-Obrázek v hlavičce webu o rozměrech 940 x 94 bodů. Jako předlohu můžete použít:
-* [Obrázek ve formátu PNG](gfx/Header_1.png)
-* [Obrázek ve formátu XCF](gfx/Header_1.xcf) (Gimp)
+Nahrajte obrázek domu o rozměrech 330-530 x 94 bodů. 
 
 ### Dům
 
