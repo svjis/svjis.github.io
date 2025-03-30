@@ -11,7 +11,7 @@ SVJIS je open source a free CMS (Content management system) vyvíjený pro potř
 {: .highlight }
 Systém je 100% free - je bez reklam, kdokoliv ho může používat zdarma, dále ho šířit nebo ho upravovat. Všechna data zůstávají jen a pouze u vás.
 
-![front page](gfx/front-page-small.png)
+![front page](gfx/home.png)
 
 * [Vlastnosti systému](Vlastnosti.md)
 * [Spuštění](Spusteni.md)
