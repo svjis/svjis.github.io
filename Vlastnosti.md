@@ -19,13 +19,13 @@ nav_order: 2
 
 ![vyhledavani](gfx/vyhledavani.png)
 
-* kategorizace článků podle oblastí (smlouvy, zápisy, ...)
-
-![redakce](gfx/redakce.png)
-
 * možnost povolení diskuzí pod článkem
 
 ![komentare](gfx/komentare.png)
+
+* kategorizace článků podle oblastí (smlouvy, zápisy, ...)
+
+![redakce](gfx/redakce.png)
 
 * krátké novinky na hlavní stránce
 
