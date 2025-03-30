@@ -51,6 +51,8 @@ nav_order: 2
 
 * každý vlastník má své "osobní nastavení" kde si udržuje aktuální kontaktní údaje
 
+![osobni-nastaveni](gfx/osobni-nastaveni.png)
+
 ## Databáze jednotek a jejich podílů
 
 * možnost evidovat seznam jednotek a jejich vlastníků
