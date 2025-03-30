@@ -67,4 +67,6 @@ nav_order: 2
 
 ## Plnohodnotná mobilní verze
 
+V dnešní době už většina uživatelů používá pro přístup k internetu mobilní telefon, takže je tu i plnohodnotná mobilní verze.
+
 ![mobilni-verze](gfx/mobilni-verze.png)
