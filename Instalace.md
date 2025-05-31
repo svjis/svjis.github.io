@@ -54,6 +54,7 @@ CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'c
 
 ```
 sudo apt-get install apache2
+sudo a2enmod headers
 cd /etc/apache2/sites-available
 sudo cp 000-default.conf mysvj.cz.conf
 sudo a2ensite mysvj.cz.conf
@@ -198,6 +199,14 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
             Require all granted
         </Files>
     </Directory>
+
+    <IfModule mod_headers.c>
+        <Directory /opt/mysvj_cz/svjis2/svjis/static/css>
+            <FilesMatch "\.css$">
+                Header set Cache-Control "max-age=3600, public"
+            </FilesMatch>
+        </Directory>
+    </IfModule>
 
     <Location "/robots.txt">
         SetHandler None
