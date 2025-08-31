@@ -15,6 +15,10 @@ nav_order: 2
 
 ## Redakční systém
 
+* kategorizace článků podle oblastí (smlouvy, zápisy, ...)
+
+![redakce](gfx/redakce.png)
+
 * fulltextové vyhledávání v článcích
 
 ![vyhledavani](gfx/vyhledavani.png)
@@ -22,10 +26,6 @@ nav_order: 2
 * možnost povolení diskuzí pod článkem
 
 ![komentare](gfx/komentare.png)
-
-* kategorizace článků podle oblastí (smlouvy, zápisy, ...)
-
-![redakce](gfx/redakce.png)
 
 * krátké novinky na hlavní stránce
 
