@@ -70,33 +70,6 @@ Na stránce seznam uživatelů můžete zakládat, editovat a zakazovat uživate
 
 Na stránce skupin můžete vytvářet a uproavovat práva jednotlivých skupin. V detailu každé skupiny je možné vybrat oprávnění které má skupina povolené.
 
-#### Seznam oprávnění
-
-| Oprávnění                    | Popis                                                       |
-| ---------------------------- | ----------------------------------------------------------- |
-| svjis_add_advert             | Právo vložit inzerát v menu inzeráty                        |
-| svjis_view_adverts_menu      | Právo vidět menu inzeráty                                   |
-| svjis_edit_article           | Právo editovat články v menu redakce                        |
-| svjis_view_redaction_menu    | Právo vidět menu redakce                                    |
-| svjis_add_article_comment    | Právo komentovat pod článkem                                |
-| svjis_edit_article_menu      | Právo editovat menu v menu redakce                          |
-| svjis_edit_admin_building    | Právo editovat informace o buově v menu administrace        |
-| svjis_edit_admin_company     | Právo editovat informace o společenství v menu administrace |
-| svjis_add_fault_comment      | Právo komentovat v tiketech v menu hlášení závad            |
-| svjis_fault_reporter         | Právo vytvářet tikety v menu hlášení závad                  |
-| svjis_fault_resolver         | Právo řešit tikety v menu hlášení závad                     |
-| svjis_view_fault_menu        | Právo vidět menu hlášení závad                              |
-| svjis_edit_article_news      | Právo editovat novinky v menu redakce                       |
-| svjis_edit_admin_preferences | Právo editovat preference v menu administrace               |
-| svjis_answer_survey          | Právo hlasovat v anketách                                   |
-| svjis_edit_survey            | Právo editovat ankety v menu redakce                        |
-| svjis_edit_useful_link       | Právo editovat užitečné odkazy v menu redakce               |
-| svjis_edit_admin_groups      | Právo editovat skupiny v menu administrace                  |
-| svjis_edit_admin_users       | Právo editovat uživatele v menu administrace                |
-| svjis_view_admin_menu        | Právo vidět menu administrace                               |
-| svjis_view_personal_menu     | Právo vidět menu osobní nastavení                           |
-| svjis_view_phonelist         | Právo vidět seznam kontaktů v menu kontakty                 |
-
 ### Vlastnosti
 
 Zde jsou definované šablony e-mailových zpráva
