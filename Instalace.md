@@ -102,15 +102,21 @@ sudo systemctl reload apache2
 
 ### Instalace SVJIS
 
+Nainstalujte uv: https://docs.astral.sh/uv/getting-started/installation/
+
+Nainstalujte SVJIS
 ```
 sudo apt-get install git
 cd /opt/mysvj_cz
 git clone https://github.com/svjis/svjis2.git
 cd svjis2/
-sudo apt-get install python3.11-venv
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+```
+
+Vyberte verzi posledního release v2.x.y (https://github.com/svjis/svjis2/releases)
+```
+git checkout v2.x.y
+uv sync --no-dev
+source .venv/bin/activate
 ```
 
 Nastavení lokálních parametrů
@@ -156,7 +162,7 @@ Migrace a dokončení nastavení SVJIS
 
 ```
 cd /opt/mysvj_cz/svjis2/
-source venv/bin/activate
+source .venv/bin/activate
 cd svjis/
 python manage.py migrate
 python manage.py svjis_setup --password <heslo pro uživatele admin>
@@ -222,7 +228,7 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
     RewriteCond %{HTTP_HOST} ^mysvj.cz$ [NC]
     RewriteRule ^(.*)$ http://www.mysvj.cz$1 [R=301,L]
 
-    WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
+    WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/.venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
     WSGIProcessGroup svjis
     WSGIScriptAlias / /opt/mysvj_cz/svjis2/svjis/svjis/wsgi.py
 
@@ -250,7 +256,7 @@ Nyní aplikace běží na adrese https://www.mysvj.cz/ uživatel je admin heslo 
 Vytvořte soubor `/opt/mysvj_cz/send_mails.sh`
 ```
 cd /opt/mysvj_cz/svjis2
-source venv/bin/activate
+source .venv/bin/activate
 cd svjis
 python manage.py svjis_send_messages
 ```

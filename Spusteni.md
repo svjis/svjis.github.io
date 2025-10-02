@@ -8,6 +8,12 @@ nav_order: 3
 
 Pro spuštění aplikace budete potřebovat [Python](https://www.python.org/downloads/) verzi 3.10 nebo vyšší. Aktuální nainstalovanou verzi můžete zkontrolovat příkazem `python --version`.
 
+Ověřte, že máte ninstalovaný nástroj pro správu závislostí `uv`:
+```
+uv --version
+```
+Pokud ne, tak si ho nainstalujte: https://docs.astral.sh/uv/getting-started/installation/
+
 Naklonujte si projekt a přepněte se do adresáře repozitáře.
 
 ```
@@ -15,20 +21,14 @@ git clone https://github.com/svjis/svjis2.git
 cd svjis2
 ```
 
-Vytvořte si virtuální prostředí a přepněte se do něj.
-
-```
-python -m venv venv
-# v Linuxu
-source venv/bin/activate
-# ve Windows
-source venv/Scripts/activate
-```
-
 Nainstalujte závislosti.
 
 ```
-pip install -r requirements.txt
+uv sync --no-dev
+# v Linuxu
+source .venv/bin/activate
+# ve Windows
+source .venv/Scripts/activate
 ```
 
 Vytvořte databázový model (spuštěním migrací) a základní parametrizaci SVJIS

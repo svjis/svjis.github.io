@@ -26,7 +26,7 @@ Vložení obrázku do textu se provede následovně:
 
 ## Jak nastavím aplikaci aby byla v angličtině?
 
-Jazyk lokalizace se volí automaticky podle nastavení v prohlížeči uživatele. Pokud se Vám tedy zobrazuje česká lokalizace a vy preferujete anglickou, tak změňte nastavení Vašeho prohlížeče tak, aby preferoval angličtinu před češtinou.
+Jazyk lokalizace se volí automaticky podle nastavení v prohlížeči uživatele. Pokud se Vám tedy zobrazuje česká lokalizace a vy preferujete například anglickou, tak v menu Osobní nastavení - Nastavení jazyka změňte preferovaný jazyk.
 
 Pokud chcete přidat více jazyků tak prostudujte kapitolu [Návody](HowTo.md) - Jak vytvořit lokalizaci pro další jazyk.
 

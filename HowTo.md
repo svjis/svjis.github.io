@@ -36,7 +36,7 @@ Pro upgradne systému na novější verzi postupujte takto:
 
 Aktivujte virtuální prostředi
 ```
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 Přepněte se do požadované verze
@@ -48,7 +48,7 @@ git pull
 
 Proveďte upgrade
 ```
-pip install -r requirements.txt
+uv sync --no-dev
 cd svjis/
 python manage.py migrate
 python manage.py compilemessages
