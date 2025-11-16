@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Instalace na Debian s Apache a Postges
-nav_order: 2
+nav_order: 1
 parent: Instalace
 ---
 
