@@ -7,13 +7,15 @@ parent: Instalace
 
 Níže je popsaný příklad instalace SVJIS na Raspberry Pi s Apache serverem.
 
+Delší dobu jsem měl web nainstalovaný na RPi v2 a nyní ho provozuji na RPi v3. Výkon na obou dvou verzích je zcela dostatečný. 
+
 ## Obsah
 {: .no_toc .text-delta }
 
 1. TOC
 {:toc}
 
-## Instalace na Raspberry Pi s Apache
+## Instalace webu SVJ na Raspberry Pi
 
 Následující příklad nainstaluje SVJIS na server `www.mysvj.cz` a předpokládá se, že DNS server je již nakonfigurovaný a port forwarding (pro porty 80 a 443) na vašem domácím routeru také.
 

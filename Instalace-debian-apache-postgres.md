@@ -13,7 +13,7 @@ Níže je popsaný příklad instalace SVJIS na Debian Linux s Apache serverem a
 1. TOC
 {:toc}
 
-## Instalace na Debian s Apache a Postgres
+## Instalace webu SVJ na Debian
 
 Následující příklad nainstaluje SVJIS na server `www.mysvj.cz` a předpokládá se že DNS server je již nakonfigurovaný.
 
