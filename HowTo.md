@@ -13,16 +13,19 @@ nav_order: 6
 1. TOC
 {:toc}
 
+## Jak doplnit chybějící překlady nebo opravit nesprávné překlady pro můj jazyk
+
+Pokud pro svůj jazyk vidíte chybějící nebo nesprávné překlady, tak se můžete přihlásit do [weblate](https://translate.codeberg.org/engage/svjis/) a překlady doplnit/opravit. Vámi provedené změny budou zapracovány do následující verze aplikace.
 
 ## Jak vytvořit lokalizaci pro další jazyk
 
-Ve výhozím stavu systém podporuje dva jazyky - Angličtinu a Češtinu. Pro přidání dalšího jazyka je potřeba vytvořit lokalizaci pro nový jazyk - např. pro Slovenštinu:
+Seznam aktuálně podporovaných jazyků naleznete [zde](https://translate.codeberg.org/projects/svjis/). Pro přidání dalšího jazyka je potřeba vytvořit lokalizaci pro nový jazyk - např. pro Slovenštinu:
 
 ```
 python manage.py makemessages -l sk
 ```
 
-Otevřít vygenerovaný soubor `svjis/articles/locale/sk/LC_MESSAGES/django.po` a přeložit stringy do slovenštiny.
+Otevřít vygenerovaný soubor `svjis/articles/locale/sk/LC_MESSAGES/django.po` a přeložit stringy do slovenštiny. Překlady je možné provádět v aplikaci [weblate](https://translate.codeberg.org/engage/svjis/).
 
 Nakonec zkompilovat překlady
 
