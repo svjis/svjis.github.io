@@ -19,7 +19,11 @@ Pokud pro svůj jazyk vidíte chybějící nebo nesprávné překlady, tak se m�
 
 ## Jak vytvořit lokalizaci pro další jazyk
 
-Seznam aktuálně podporovaných jazyků naleznete [zde](https://translate.codeberg.org/projects/svjis/). Pro přidání dalšího jazyka je potřeba vytvořit lokalizaci pro nový jazyk - např. pro Slovenštinu:
+Seznam aktuálně podporovaných jazyků: 
+
+[![Stav překladu](https://translate.codeberg.org/widget/svjis/multi-auto.svg)](https://translate.codeberg.org/engage/svjis/)
+
+Pro přidání dalšího jazyka je potřeba vytvořit lokalizaci pro nový jazyk - např. pro Slovenštinu:
 
 ```
 python manage.py makemessages -l sk
