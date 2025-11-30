@@ -221,6 +221,8 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
     RewriteCond %{HTTP_HOST} ^mysvj.cz$ [NC]
     RewriteRule ^(.*)$ http://www.mysvj.cz$1 [R=301,L]
 
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
     WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/.venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
     WSGIProcessGroup svjis
     WSGIScriptAlias / /opt/mysvj_cz/svjis2/svjis/svjis/wsgi.py
