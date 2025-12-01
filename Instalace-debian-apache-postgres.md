@@ -126,6 +126,7 @@ Upravte soubor `local_settings.py`
 DEBUG = False
 SECRET_KEY = '***'
 ALLOWED_HOSTS = ['www.mysvj.cz']
+CSRF_COOKIE_SECURE = True
 
 TIME_ZONE = 'Europe/Prague'
 
