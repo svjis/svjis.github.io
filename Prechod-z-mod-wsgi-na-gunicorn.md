@@ -30,7 +30,7 @@ uv sync --no-dev --group linux-server
 
 Vytvořte systemd service pro gunicorn:
 ```
-sudo /etc/systemd/system/gunicorn-mysvj.service
+sudo nano /etc/systemd/system/gunicorn-mysvj.service
 ```
 
 a vložte následující obsah:
@@ -56,7 +56,6 @@ Zkontrolujte zda má uživatel `www-data` přístup k pythonu instalovaném pomo
 Nyní můžete `gunicorn` spustit.
 
 ```
-sudo chmod ugo+x /etc/systemd/system/gunicorn-mysvj.service
 sudo systemctl enable gunicorn-mysvj.service
 sudo systemctl start gunicorn-mysvj.service
 ```
@@ -71,9 +70,9 @@ Povolte proxy moduly:
 sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests headers
 ```
 
-Upravte soubor `mysvj.cz-le-ssl.conf`
+Upravte soubor `/etc/apache2/sites-available/mysvj.cz-le-ssl.conf`
 
-Přidejte ProxyPreserveHost On a ProxyRequests Off na začátek souboru:
+Přidejte `ProxyPreserveHost On` a `ProxyRequests Off` na začátek souboru:
 
 ```
 ServerAdmin admin@mysvj.cz
