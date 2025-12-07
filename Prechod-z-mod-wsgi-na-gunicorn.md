@@ -39,7 +39,7 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/opt/mysvj_cz/svjis2/svjis 
-ExecStart=/opt/mysvj_cz/svjis2/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 svjis.wsgi:application
+ExecStart=/opt/mysvj_cz/svjis2/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 mysvj.wsgi:application
 Restart=on-failure
 
 [Install]
