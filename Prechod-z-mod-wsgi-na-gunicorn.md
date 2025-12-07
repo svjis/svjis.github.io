@@ -9,6 +9,10 @@ Níže je popsaný přechod z `mod_wsgi` na `gunicorn`.
 
 Návody instalace popsané v předchozích kapitolách používjí `mod_wsgi`, ten je ale závislý na systémové verzi pythonu a bez překompilace neumí použít jinou verzi. Řešením je přechod na `gunicorn`, který je popsaný v této kapitole.
 
+Tato konfigurace umožní, aby se o správnou verzi pythonu staral `uv`.
+
+Upozornění: `gunicorn` neběží na Windows.
+
 ## Obsah
 {: .no_toc .text-delta }
 
@@ -100,6 +104,9 @@ Zakomentujte konfiguraci pro `mod_wsgi` a vložte konfiguraci pro proxy-path:
 
 ProxyPass /media/ !
 ProxyPass /static/ !
+ProxyPass /robots.txt !
+ProxyPass /.well-known/ !
+ProxyPass /favicon.ico !
 ProxyPass        / http://127.0.0.1:8000/
 ProxyPassReverse / http://127.0.0.1:8000/
 ProxyPassMatch ^/(media/.*) !
