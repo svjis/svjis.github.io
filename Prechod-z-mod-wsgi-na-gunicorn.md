@@ -108,7 +108,6 @@ ProxyPass /.well-known/ !
 ProxyPass /favicon.ico !
 ProxyPass        / http://127.0.0.1:8000/
 ProxyPassReverse / http://127.0.0.1:8000/
-ProxyPassMatch ^/(media/.*) !
 RequestHeader set X-Forwarded-Proto expr=%{REQUEST_SCHEME}
 RequestHeader set X-Forwarded-For %{REMOTE_ADDR}e
 ```
