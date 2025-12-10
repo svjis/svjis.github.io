@@ -7,7 +7,7 @@ parent: Instalace
 
 Níže je popsaný přechod z `mod_wsgi` na `gunicorn`.
 
-Návody instalace popsané v předchozích kapitolách používjí `mod_wsgi`, ten je ale závislý na systémové verzi pythonu a bez překompilace neumí použít jinou verzi. Řešením je přechod na `gunicorn`, který je popsaný v této kapitole.
+Návody instalace popsané v předchozích kapitolách před časem používaly `mod_wsgi`, ten je ale závislý na systémové verzi pythonu a bez překompilace neumí použít jinou verzi. Řešením je přechod na `gunicorn`, který je popsaný v této kapitole.
 
 Tato konfigurace umožní, aby se o správnou verzi pythonu staral `uv`.
 
