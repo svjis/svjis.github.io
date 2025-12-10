@@ -43,56 +43,6 @@ CREATE USER svjis_user WITH PASSWORD '***';
 CREATE DATABASE svjis_db OWNER svjis_user TEMPLATE = 'template0' LC_COLLATE = 'cs_CZ.UTF-8' LC_CTYPE = 'cs_CZ.UTF-8';
 ```
 
-### Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
-
-```
-sudo apt-get install apache2
-sudo a2enmod headers
-cd /etc/apache2/sites-available
-sudo cp 000-default.conf mysvj.cz.conf
-sudo a2ensite mysvj.cz.conf
-sudo systemctl reload apache2
-```
-
-Upravte `mysvj.cz.conf` následujícím způsobem:
-
-```
-<VirtualHost *:80>
-    ServerAdmin admin@mysvj.cz
-    ServerName www.mysvj.cz
-    ServerAlias mysvj.cz
-    ServerSignature Off
-    DocumentRoot /opt/mysvj_cz/www
-    <Directory /opt/mysvj_cz/www>
-        AllowOverride All
-        Require all granted
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/mysvj_cz_error.log
-    CustomLog ${APACHE_LOG_DIR}/mysvj_cz_access.log combined
-</VirtualHost>
-```
-
-Vytvořte příslušné adresáře a soubory
-
-```
-sudo mkdir /opt/mysvj_cz
-sudo mkdir /opt/mysvj_cz/www
-sudo touch /opt/mysvj_cz/www/security.txt
-sudo touch /opt/mysvj_cz/www/robots.txt
-sudo systemctl reload apache2
-```
-
-### Nainstalujte certbot
-
-Je potřeba aby byl DNS server nakonfigurovaný a oba záznamy `www.mysvj.cz` a `mysvj.cz` ukazovaly na náš server.
-
-```
-sudo apt-get install certbot
-sudo apt-get install python3-certbot-apache
-sudo certbot --apache -d www.mysvj.cz -d mysvj.cz
-sudo systemctl reload apache2
-```
-
 ### Instalace SVJIS
 
 Nainstalujte uv: https://docs.astral.sh/uv/getting-started/installation/
@@ -100,6 +50,7 @@ Nainstalujte uv: https://docs.astral.sh/uv/getting-started/installation/
 Nainstalujte SVJIS
 ```
 sudo apt-get install git
+sudo mkdir /opt/mysvj_cz
 cd /opt/mysvj_cz
 git clone https://github.com/svjis/svjis2.git
 cd svjis2/
@@ -108,7 +59,7 @@ cd svjis2/
 Vyberte verzi posledního release v2.x.y (https://github.com/svjis/svjis2/releases)
 ```
 git checkout v2.x.y
-uv sync --no-dev
+uv sync --no-dev --group linux-server
 source .venv/bin/activate
 ```
 
@@ -163,8 +114,94 @@ python manage.py svjis_setup --password <heslo pro uživatele admin>
 sudo apt install gettext
 python manage.py compilemessages
 python manage.py collectstatic
-sudo apt-get install libapache2-mod-wsgi-py3
 ```
+
+### Nastavte Gunicorn
+
+Vytvořte systemd service pro gunicorn:
+```
+sudo nano /etc/systemd/system/gunicorn-mysvj.service
+```
+
+a vložte následující obsah:
+```
+[Unit]
+Description=gunicorn for mysvj.cz
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/mysvj_cz/svjis2/svjis 
+ExecStart=/opt/mysvj_cz/svjis2/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 svjis.wsgi:application
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Zkontrolujte zda má uživatel `www-data` přístup k pythonu instalovaném pomocí `uv`, který je obvykle ve složce uživatele který `uv` příkaz spouští `~/.local/share/uv/python/`.
+
+
+Nyní můžete `gunicorn` spustit.
+
+```
+sudo systemctl enable gunicorn-mysvj.service
+sudo systemctl start gunicorn-mysvj.service
+```
+
+To, že `gunicorn` nedodáva statická data jako css, obrázy ... je v pořádku. O statická data se stará `Apache`.
+
+### Nainstalujte Apache server a vytvořte virtuální host mysvj.cz
+
+```
+sudo apt-get install apache2
+sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests headers
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf mysvj.cz.conf
+sudo a2ensite mysvj.cz.conf
+sudo systemctl reload apache2
+```
+
+Upravte `mysvj.cz.conf` následujícím způsobem:
+
+```
+<VirtualHost *:80>
+    ServerAdmin admin@mysvj.cz
+    ServerName www.mysvj.cz
+    ServerAlias mysvj.cz
+    ServerSignature Off
+    DocumentRoot /opt/mysvj_cz/www
+    <Directory /opt/mysvj_cz/www>
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/mysvj_cz_error.log
+    CustomLog ${APACHE_LOG_DIR}/mysvj_cz_access.log combined
+</VirtualHost>
+```
+
+Vytvořte příslušné adresáře a soubory
+
+```
+sudo mkdir /opt/mysvj_cz/www
+sudo touch /opt/mysvj_cz/www/security.txt
+sudo touch /opt/mysvj_cz/www/robots.txt
+sudo systemctl reload apache2
+```
+
+### Nainstalujte certbot
+
+Je potřeba aby byl DNS server nakonfigurovaný a oba záznamy `www.mysvj.cz` a `mysvj.cz` ukazovaly na náš server.
+
+```
+sudo apt-get install certbot
+sudo apt-get install python3-certbot-apache
+sudo certbot --apache -d www.mysvj.cz -d mysvj.cz
+sudo systemctl reload apache2
+```
+
+### Dokončete konfiguraci Apache
 
 Upravte soubor `mysvj.cz-le-ssl.conf`
 
@@ -175,6 +212,9 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
     ServerName www.mysvj.cz
     ServerAlias mysvj.cz
     ServerSignature Off
+
+    ProxyPreserveHost On
+    ProxyRequests Off
 
     Alias /media /opt/mysvj_cz/svjis2/svjis/media
     Alias /static /opt/mysvj_cz/svjis2/svjis/static
@@ -192,12 +232,6 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
 
     <Directory /opt/mysvj_cz/www>
         Require all granted
-    </Directory>
-
-    <Directory /opt/mysvj_cz/svjis2/svjis/svjis>
-        <Files wsgi.py>
-            Require all granted
-        </Files>
     </Directory>
 
     <IfModule mod_headers.c>
@@ -224,9 +258,15 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
 
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    WSGIDaemonProcess svjis python-path=/opt/mysvj_cz/svjis2/svjis python-home=/opt/mysvj_cz/svjis2/.venv/ lang='en_US.UTF-8' locale='en_US.UTF-8'
-    WSGIProcessGroup svjis
-    WSGIScriptAlias / /opt/mysvj_cz/svjis2/svjis/svjis/wsgi.py
+    ProxyPass /media/ !
+    ProxyPass /static/ !
+    ProxyPass /robots.txt !
+    ProxyPass /.well-known/ !
+    ProxyPass /favicon.ico !
+    ProxyPass        / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
+    RequestHeader set X-Forwarded-Proto expr=%{REQUEST_SCHEME}
+    RequestHeader set X-Forwarded-For %{REMOTE_ADDR}e
 
     ErrorLog ${APACHE_LOG_DIR}/mysvj_cz_error.log
     CustomLog ${APACHE_LOG_DIR}/mysvj_cz_access.log combined
