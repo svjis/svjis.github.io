@@ -113,6 +113,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
+{: .highlight }
 Zkontrolujte zda má uživatel `www-data` přístup k pythonu instalovaném pomocí `uv`, který je obvykle ve složce uživatele který `uv` příkaz spouští `~/.local/share/uv/python/`.
 
 
