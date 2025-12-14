@@ -6,8 +6,6 @@ nav_order: 3
 
 # Spuštění
 
-Pro spuštění aplikace budete potřebovat [Python](https://www.python.org/downloads/) verzi 3.10 nebo vyšší. Aktuální nainstalovanou verzi můžete zkontrolovat příkazem `python --version`.
-
 Ověřte, že máte ninstalovaný nástroj pro správu závislostí `uv`:
 ```
 uv --version

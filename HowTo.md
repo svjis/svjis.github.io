@@ -55,7 +55,7 @@ git pull
 
 Proveďte upgrade
 ```
-uv sync --no-dev
+uv sync --no-dev --group linux-server
 cd svjis/
 python manage.py migrate
 python manage.py compilemessages
