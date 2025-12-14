@@ -64,5 +64,5 @@ python manage.py collectstatic
 
 Restartujte server
 ```
-sudo systemctl restart apache2.service
+sudo systemctl restart gunicorn-mysvj.service
 ```
