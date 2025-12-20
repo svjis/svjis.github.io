@@ -66,3 +66,10 @@ Restartujte server
 ```
 sudo systemctl restart gunicorn-mysvj.service
 ```
+
+## Jak vytvořit nový SECRET_KEY
+`SECRET_KEY` může obsahovat libovolný dostatečně dlouhý náhodný string. K vygenerování takového stringu můžete použít třeba následující příkaz:
+
+```
+python -c 'import secrets; print(secrets.token_hex(100))'
+```
