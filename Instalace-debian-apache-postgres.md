@@ -221,13 +221,13 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
     ProxyPreserveHost On
     ProxyRequests Off
 
-    Alias /media /opt/mysvj_cz/svjis2/svjis/media
+    Alias /media/company /opt/mysvj_cz/svjis2/svjis/media/company
     Alias /static /opt/mysvj_cz/svjis2/svjis/static
     Alias /robots.txt /opt/mysvj_cz/www/robots.txt
     Alias /.well-known/security.txt /opt/mysvj_cz/www/security.txt
     Alias /favicon.ico /opt/mysvj_cz/www/favicon.ico
 
-    <Directory /opt/mysvj_cz/svjis2/svjis/media>
+    <Directory /opt/mysvj_cz/svjis2/svjis/media/company>
         Require all granted
     </Directory>
 
@@ -263,7 +263,7 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
 
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    ProxyPass /media/ !
+    ProxyPass /media/company/ !
     ProxyPass /static/ !
     ProxyPass /robots.txt !
     ProxyPass /.well-known/ !
