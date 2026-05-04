@@ -239,14 +239,6 @@ Upravte soubor `mysvj.cz-le-ssl.conf`
         Require all granted
     </Directory>
 
-    <IfModule mod_headers.c>
-        <Directory /opt/mysvj_cz/svjis2/svjis/static/css>
-            <FilesMatch "\.css$">
-                Header set Cache-Control "max-age=3600, public"
-            </FilesMatch>
-        </Directory>
-    </IfModule>
-
     <Location "/robots.txt">
         SetHandler None
         Require all granted
