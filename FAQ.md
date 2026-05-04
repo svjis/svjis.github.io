@@ -49,7 +49,7 @@ V místě, kde se název láme a neměl by zadejte místo obyčejné mezery takz
 * ve Windows podržte Alt a na numerické klávesnici napište 0160
 * v Linuxu Ctrl+Shift+U a napište 00A0 a potvrďte Enterem
 
-## Jak můžu vyrobit pro můj wen ikonu (favicon.ico)
+## Jak můžu vyrobit pro můj web ikonu (favicon.ico)
 
 1. Vytvořte ve vešem oblíbeném editoru obrázků (např. Gimp) obrázek o rozměrech 192x192.
 1. Eportujte obrázek jako `favicon.png`
