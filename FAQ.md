@@ -41,3 +41,10 @@ V SVJIS projektu jsou HTML šablony uloženy v adresáři `/svjis/articles/templ
 Možností je více, buď můžete aplikaci nainstalovat na Váš počítač a provozovat ho na serveru "pod stolem" - SVJIS běží docela dobře i na Raspberry Pi. Další možností je pronájem virtuálního privátního severu (VPS) u některé ze společností, které službu nabízejí. Já mám dobrou zkušenost s [Web4U](https://www.web4u.cz/cs/serverhosting/virtualni-serverhosting) varianta linux mini (1 virtuální CPU jádro, 1GB RAM, 20GB Disk).
 
 Pokud máte někdo jinou dobrou zkušenost jak systém provozovat, tak nám dejte vědět.
+
+## Nastavil jsem název společenství ale název se mi v záhlaví láme tam kde nechci.
+
+V místě, kde se název láme a neměl by zadejte místo obyčejné mezery takzvanou nezlomitelnou mezeru.
+
+* ve Windows podržte Alt a na numerické klávesnici napište 0160
+* v Linuxu Ctrl+Shift+U a napište 00A0 a potvrďte Enterem
