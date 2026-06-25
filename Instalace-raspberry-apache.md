@@ -52,8 +52,6 @@ Nastavení lokálních parametrů
 ```
 cd /opt/mysvj_cz/svjis2
 touch svjis/svjis/local_settings.py
-sudo chgrp -R www-data svjis/
-sudo chmod -R g+w svjis/
 ```
 
 Upravte soubor `local_settings.py`
@@ -91,6 +89,14 @@ python manage.py svjis_setup --password <heslo pro uživatele admin>
 sudo apt install gettext
 python manage.py compilemessages
 python manage.py collectstatic
+```
+
+Opravte práva
+
+```
+cd /opt/mysvj_cz/svjis2/
+sudo chgrp -R www-data svjis/
+sudo chmod -R g+w svjis/
 ```
 
 ### Nastavte Gunicorn
